@@ -12,6 +12,9 @@ namespace StockApp.Data.Context
             Database.Connection.ConnectionString = ConnStr;
         }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<SaleDetail> SaleDetails { get; set; }
+        public DbSet<Product> Products { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -19,6 +22,9 @@ namespace StockApp.Data.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new ClientConfig());
+            modelBuilder.Configurations.Add(new ProductConfig());
+            modelBuilder.Configurations.Add(new SaleConfig());
+            modelBuilder.Configurations.Add(new SaleDetailConfig());
         }
 
     }

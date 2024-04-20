@@ -19,5 +19,8 @@ namespace StockApp.Data.Entity
         [Required,MinLength(10),MaxLength(10)]
         public string Phone { get; set; }
 
+
+        public ICollection<Sale> Sales { get; set; } = new List<Sale>();
+
     }
 }

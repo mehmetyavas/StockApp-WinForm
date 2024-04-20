@@ -57,9 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Configuration\ClientConfig.cs" />
+    <Compile Include="Data\Configuration\ProductConfig.cs" />
+    <Compile Include="Data\Configuration\SaleConfig.cs" />
+    <Compile Include="Data\Configuration\SaleDetailConfig.cs" />
     <Compile Include="Data\Context\StockDbContext.cs" />
     <Compile Include="Data\Entity\BaseEntity.cs" />
     <Compile Include="Data\Entity\Client.cs" />
+    <Compile Include="Data\Entity\Product.cs" />
+    <Compile Include="Data\Entity\Sale.cs" />
+    <Compile Include="Data\Entity\SaleDetail.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,14 +76,23 @@
     <Compile Include="Migrations\202404201502292_Initial.designer.cs">
       <DependentUpon>202404201502292_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404201543246_SaleSaleDetailProductTable.cs" />
+    <Compile Include="Migrations\202404201543246_SaleSaleDetailProductTable.designer.cs">
+      <DependentUpon>202404201543246_SaleSaleDetailProductTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CustomAttributes\PositiveNumberAttribute.cs" />
+    <Compile Include="Utils\Extensions\StringExtensions.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404201502292_Initial.resx">
       <DependentUpon>202404201502292_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404201543246_SaleSaleDetailProductTable.resx">
+      <DependentUpon>202404201543246_SaleSaleDetailProductTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
