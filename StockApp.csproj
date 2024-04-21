@@ -68,13 +68,14 @@
     <Compile Include="Data\Entity\Sale.cs" />
     <Compile Include="Data\Entity\SaleDetail.cs" />
     <Compile Include="Data\Repository\BaseRepository.cs" />
+    <Compile Include="Data\Repository\ClientRepository.cs" />
     <Compile Include="Data\Repository\IRepository.cs" />
     <Compile Include="Data\Repository\ProductRepository.cs" />
-    <Compile Include="FormCreateClient.cs">
+    <Compile Include="FormCreate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCreateClient.Designer.cs">
-      <DependentUpon>FormCreateClient.cs</DependentUpon>
+    <Compile Include="FormCreate.Designer.cs">
+      <DependentUpon>FormCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -107,8 +108,8 @@
     <Compile Include="Utils\Helpers\Alert.cs" />
     <Compile Include="Utils\Extensions\DataGridViewExtensions.cs" />
     <Compile Include="Utils\Extensions\StringExtensions.cs" />
-    <EmbeddedResource Include="FormCreateClient.resx">
-      <DependentUpon>FormCreateClient.cs</DependentUpon>
+    <EmbeddedResource Include="FormCreate.resx">
+      <DependentUpon>FormCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -136,6 +137,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\StockApp.Data.Entity.Client.datasource" />
     <None Include="Properties\DataSources\StockApp.Data.Entity.Product.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
