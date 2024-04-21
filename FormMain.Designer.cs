@@ -31,7 +31,7 @@ namespace StockApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpTop = new System.Windows.Forms.GroupBox();
             this.grpSale = new System.Windows.Forms.GroupBox();
             this.btnListSale = new System.Windows.Forms.Button();
@@ -43,9 +43,29 @@ namespace StockApp
             this.btnListClient = new System.Windows.Forms.Button();
             this.btnClientCreate = new System.Windows.Forms.Button();
             this.grpMid = new System.Windows.Forms.GroupBox();
+            this.panelSale = new System.Windows.Forms.Panel();
+            this.GridViewSaleProduct = new System.Windows.Forms.DataGridView();
+            this.ColumnSaleCheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.grpSaleLeft = new System.Windows.Forms.GroupBox();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblLastNAme = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.grpSaleTop = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSalePrd = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
             this.panelClient = new System.Windows.Forms.Panel();
             this.dataGridViewClient = new System.Windows.Forms.DataGridView();
+            this.ColumnClientUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnClientDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panelClientTop = new System.Windows.Forms.Panel();
+            this.btnSalePrd = new System.Windows.Forms.Button();
+            this.btnClientRefresh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtClientSearch = new System.Windows.Forms.TextBox();
             this.panelProduct = new System.Windows.Forms.Panel();
@@ -53,26 +73,18 @@ namespace StockApp
             this.columnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panelProductTop = new System.Windows.Forms.Panel();
+            this.btnPrdRefresh = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrdSearch = new System.Windows.Forms.TextBox();
-            this.btnClientRefresh = new System.Windows.Forms.Button();
-            this.btnPrdRefresh = new System.Windows.Forms.Button();
-            this.ColumnClientUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnClientDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnSalePrd = new System.Windows.Forms.Button();
-            this.panelSale = new System.Windows.Forms.Panel();
-            this.grpSaleTop = new System.Windows.Forms.GroupBox();
-            this.grpSaleLeft = new System.Windows.Forms.GroupBox();
-            this.GridViewSaleProduct = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblFirstName = new System.Windows.Forms.Label();
-            this.lblLastNAme = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblPhone = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockAmountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcodeNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saleDetailsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ıdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdAtDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modifiedAtDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,31 +104,21 @@ namespace StockApp
             this.saleDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSaleCheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockAmountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.barcodeNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleDetailsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ıdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdAtDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modifiedAtDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpTop.SuspendLayout();
             this.grpSale.SuspendLayout();
             this.grpProduct.SuspendLayout();
             this.grpClient.SuspendLayout();
             this.grpMid.SuspendLayout();
+            this.panelSale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewSaleProduct)).BeginInit();
+            this.grpSaleLeft.SuspendLayout();
+            this.grpSaleTop.SuspendLayout();
             this.panelClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).BeginInit();
             this.panelClientTop.SuspendLayout();
             this.panelProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
             this.panelProductTop.SuspendLayout();
-            this.panelSale.SuspendLayout();
-            this.grpSaleTop.SuspendLayout();
-            this.grpSaleLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewSaleProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -240,6 +242,179 @@ namespace StockApp
             this.grpMid.TabIndex = 1;
             this.grpMid.TabStop = false;
             // 
+            // panelSale
+            // 
+            this.panelSale.Controls.Add(this.GridViewSaleProduct);
+            this.panelSale.Controls.Add(this.grpSaleLeft);
+            this.panelSale.Controls.Add(this.grpSaleTop);
+            this.panelSale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSale.Location = new System.Drawing.Point(3, 16);
+            this.panelSale.Name = "panelSale";
+            this.panelSale.Size = new System.Drawing.Size(1043, 662);
+            this.panelSale.TabIndex = 3;
+            this.panelSale.Visible = false;
+            // 
+            // GridViewSaleProduct
+            // 
+            this.GridViewSaleProduct.AutoGenerateColumns = false;
+            this.GridViewSaleProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridViewSaleProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridViewSaleProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSaleCheckBox,
+            this.nameDataGridViewTextBoxColumn1,
+            this.descriptionDataGridViewTextBoxColumn1,
+            this.stockAmountDataGridViewTextBoxColumn1,
+            this.priceDataGridViewTextBoxColumn1,
+            this.barcodeNoDataGridViewTextBoxColumn1,
+            this.saleDetailsDataGridViewTextBoxColumn1,
+            this.ıdDataGridViewTextBoxColumn,
+            this.createdAtDataGridViewTextBoxColumn2,
+            this.modifiedAtDataGridViewTextBoxColumn2});
+            this.GridViewSaleProduct.DataSource = this.productBindingSource;
+            this.GridViewSaleProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridViewSaleProduct.Location = new System.Drawing.Point(233, 86);
+            this.GridViewSaleProduct.Name = "GridViewSaleProduct";
+            this.GridViewSaleProduct.Size = new System.Drawing.Size(810, 576);
+            this.GridViewSaleProduct.TabIndex = 2;
+            // 
+            // ColumnSaleCheckBox
+            // 
+            this.ColumnSaleCheckBox.HeaderText = "Seç";
+            this.ColumnSaleCheckBox.Name = "ColumnSaleCheckBox";
+            this.ColumnSaleCheckBox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnSaleCheckBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // grpSaleLeft
+            // 
+            this.grpSaleLeft.Controls.Add(this.lblPhone);
+            this.grpSaleLeft.Controls.Add(this.lblLastNAme);
+            this.grpSaleLeft.Controls.Add(this.label9);
+            this.grpSaleLeft.Controls.Add(this.label6);
+            this.grpSaleLeft.Controls.Add(this.lblEmail);
+            this.grpSaleLeft.Controls.Add(this.lblFirstName);
+            this.grpSaleLeft.Controls.Add(this.label7);
+            this.grpSaleLeft.Controls.Add(this.label3);
+            this.grpSaleLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grpSaleLeft.Location = new System.Drawing.Point(0, 86);
+            this.grpSaleLeft.Name = "grpSaleLeft";
+            this.grpSaleLeft.Size = new System.Drawing.Size(233, 576);
+            this.grpSaleLeft.TabIndex = 1;
+            this.grpSaleLeft.TabStop = false;
+            this.grpSaleLeft.Text = "Cari Bilgisi";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(94, 160);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(35, 13);
+            this.lblPhone.TabIndex = 3;
+            this.lblPhone.Text = "label5";
+            // 
+            // lblLastNAme
+            // 
+            this.lblLastNAme.AutoSize = true;
+            this.lblLastNAme.Location = new System.Drawing.Point(94, 98);
+            this.lblLastNAme.Name = "lblLastNAme";
+            this.lblLastNAme.Size = new System.Drawing.Size(35, 13);
+            this.lblLastNAme.TabIndex = 3;
+            this.lblLastNAme.Text = "label5";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(29, 160);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Telefon:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(35, 98);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Soyad:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(94, 131);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(35, 13);
+            this.lblEmail.TabIndex = 1;
+            this.lblEmail.Text = "label4";
+            // 
+            // lblFirstName
+            // 
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.Location = new System.Drawing.Point(94, 69);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(35, 13);
+            this.lblFirstName.TabIndex = 1;
+            this.lblFirstName.Text = "label4";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(40, 131);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Email:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(52, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Ad:";
+            // 
+            // grpSaleTop
+            // 
+            this.grpSaleTop.Controls.Add(this.label4);
+            this.grpSaleTop.Controls.Add(this.txtSalePrd);
+            this.grpSaleTop.Controls.Add(this.btnBack);
+            this.grpSaleTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpSaleTop.Location = new System.Drawing.Point(0, 0);
+            this.grpSaleTop.Name = "grpSaleTop";
+            this.grpSaleTop.Size = new System.Drawing.Size(1043, 86);
+            this.grpSaleTop.TabIndex = 0;
+            this.grpSaleTop.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label4.Location = new System.Drawing.Point(236, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 16);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "SEARCH:";
+            // 
+            // txtSalePrd
+            // 
+            this.txtSalePrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtSalePrd.Location = new System.Drawing.Point(322, 37);
+            this.txtSalePrd.Name = "txtSalePrd";
+            this.txtSalePrd.Size = new System.Drawing.Size(257, 26);
+            this.txtSalePrd.TabIndex = 3;
+            this.txtSalePrd.TextChanged += new System.EventHandler(this.txtSalePrd_TextChanged);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Image = global::StockApp.Properties.Resources.back1;
+            this.btnBack.Location = new System.Drawing.Point(9, 25);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(66, 45);
+            this.btnBack.TabIndex = 2;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // panelClient
             // 
             this.panelClient.Controls.Add(this.dataGridViewClient);
@@ -276,6 +451,22 @@ namespace StockApp
             this.dataGridViewClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClient_CellClick);
             this.dataGridViewClient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClient_CellContentClick);
             // 
+            // ColumnClientUpdate
+            // 
+            this.ColumnClientUpdate.FillWeight = 19.0511F;
+            this.ColumnClientUpdate.HeaderText = "Güncelle";
+            this.ColumnClientUpdate.Name = "ColumnClientUpdate";
+            this.ColumnClientUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnClientUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColumnClientDelete
+            // 
+            this.ColumnClientDelete.FillWeight = 12.9826F;
+            this.ColumnClientDelete.HeaderText = "Sil";
+            this.ColumnClientDelete.Name = "ColumnClientDelete";
+            this.ColumnClientDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnClientDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // panelClientTop
             // 
             this.panelClientTop.Controls.Add(this.btnSalePrd);
@@ -287,6 +478,27 @@ namespace StockApp
             this.panelClientTop.Name = "panelClientTop";
             this.panelClientTop.Size = new System.Drawing.Size(1043, 63);
             this.panelClientTop.TabIndex = 0;
+            // 
+            // btnSalePrd
+            // 
+            this.btnSalePrd.Enabled = false;
+            this.btnSalePrd.Location = new System.Drawing.Point(822, 15);
+            this.btnSalePrd.Name = "btnSalePrd";
+            this.btnSalePrd.Size = new System.Drawing.Size(97, 37);
+            this.btnSalePrd.TabIndex = 2;
+            this.btnSalePrd.Text = "Satış Yap";
+            this.btnSalePrd.UseVisualStyleBackColor = true;
+            this.btnSalePrd.Click += new System.EventHandler(this.btnSalePrd_Click);
+            // 
+            // btnClientRefresh
+            // 
+            this.btnClientRefresh.Location = new System.Drawing.Point(937, 15);
+            this.btnClientRefresh.Name = "btnClientRefresh";
+            this.btnClientRefresh.Size = new System.Drawing.Size(97, 37);
+            this.btnClientRefresh.TabIndex = 2;
+            this.btnClientRefresh.Text = "Yenile";
+            this.btnClientRefresh.UseVisualStyleBackColor = true;
+            this.btnClientRefresh.Click += new System.EventHandler(this.btnClientRefresh_Click);
             // 
             // label2
             // 
@@ -344,10 +556,10 @@ namespace StockApp
             // 
             // columnUpdate
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Green;
-            this.columnUpdate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
+            this.columnUpdate.DefaultCellStyle = dataGridViewCellStyle2;
             this.columnUpdate.FillWeight = 15F;
             this.columnUpdate.HeaderText = "Güncelle";
             this.columnUpdate.Name = "columnUpdate";
@@ -372,6 +584,16 @@ namespace StockApp
             this.panelProductTop.Size = new System.Drawing.Size(1043, 63);
             this.panelProductTop.TabIndex = 0;
             // 
+            // btnPrdRefresh
+            // 
+            this.btnPrdRefresh.Location = new System.Drawing.Point(937, 15);
+            this.btnPrdRefresh.Name = "btnPrdRefresh";
+            this.btnPrdRefresh.Size = new System.Drawing.Size(97, 37);
+            this.btnPrdRefresh.TabIndex = 3;
+            this.btnPrdRefresh.Text = "Yenile";
+            this.btnPrdRefresh.UseVisualStyleBackColor = true;
+            this.btnPrdRefresh.Click += new System.EventHandler(this.btnPrdRefresh_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -390,197 +612,62 @@ namespace StockApp
             this.txtPrdSearch.Size = new System.Drawing.Size(257, 26);
             this.txtPrdSearch.TabIndex = 0;
             // 
-            // btnClientRefresh
+            // nameDataGridViewTextBoxColumn1
             // 
-            this.btnClientRefresh.Location = new System.Drawing.Point(937, 15);
-            this.btnClientRefresh.Name = "btnClientRefresh";
-            this.btnClientRefresh.Size = new System.Drawing.Size(97, 37);
-            this.btnClientRefresh.TabIndex = 2;
-            this.btnClientRefresh.Text = "Yenile";
-            this.btnClientRefresh.UseVisualStyleBackColor = true;
-            this.btnClientRefresh.Click += new System.EventHandler(this.btnClientRefresh_Click);
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             // 
-            // btnPrdRefresh
+            // descriptionDataGridViewTextBoxColumn1
             // 
-            this.btnPrdRefresh.Location = new System.Drawing.Point(937, 15);
-            this.btnPrdRefresh.Name = "btnPrdRefresh";
-            this.btnPrdRefresh.Size = new System.Drawing.Size(97, 37);
-            this.btnPrdRefresh.TabIndex = 3;
-            this.btnPrdRefresh.Text = "Yenile";
-            this.btnPrdRefresh.UseVisualStyleBackColor = true;
-            this.btnPrdRefresh.Click += new System.EventHandler(this.btnPrdRefresh_Click);
+            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
             // 
-            // ColumnClientUpdate
+            // stockAmountDataGridViewTextBoxColumn1
             // 
-            this.ColumnClientUpdate.FillWeight = 19.0511F;
-            this.ColumnClientUpdate.HeaderText = "Güncelle";
-            this.ColumnClientUpdate.Name = "ColumnClientUpdate";
-            this.ColumnClientUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnClientUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.stockAmountDataGridViewTextBoxColumn1.DataPropertyName = "StockAmount";
+            this.stockAmountDataGridViewTextBoxColumn1.HeaderText = "StockAmount";
+            this.stockAmountDataGridViewTextBoxColumn1.Name = "stockAmountDataGridViewTextBoxColumn1";
             // 
-            // ColumnClientDelete
+            // priceDataGridViewTextBoxColumn1
             // 
-            this.ColumnClientDelete.FillWeight = 12.9826F;
-            this.ColumnClientDelete.HeaderText = "Sil";
-            this.ColumnClientDelete.Name = "ColumnClientDelete";
-            this.ColumnClientDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnClientDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
             // 
-            // btnSalePrd
+            // barcodeNoDataGridViewTextBoxColumn1
             // 
-            this.btnSalePrd.Enabled = false;
-            this.btnSalePrd.Location = new System.Drawing.Point(822, 15);
-            this.btnSalePrd.Name = "btnSalePrd";
-            this.btnSalePrd.Size = new System.Drawing.Size(97, 37);
-            this.btnSalePrd.TabIndex = 2;
-            this.btnSalePrd.Text = "Satış Yap";
-            this.btnSalePrd.UseVisualStyleBackColor = true;
-            this.btnSalePrd.Click += new System.EventHandler(this.btnSalePrd_Click);
+            this.barcodeNoDataGridViewTextBoxColumn1.DataPropertyName = "BarcodeNo";
+            this.barcodeNoDataGridViewTextBoxColumn1.HeaderText = "BarcodeNo";
+            this.barcodeNoDataGridViewTextBoxColumn1.Name = "barcodeNoDataGridViewTextBoxColumn1";
             // 
-            // panelSale
+            // saleDetailsDataGridViewTextBoxColumn1
             // 
-            this.panelSale.Controls.Add(this.GridViewSaleProduct);
-            this.panelSale.Controls.Add(this.grpSaleLeft);
-            this.panelSale.Controls.Add(this.grpSaleTop);
-            this.panelSale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSale.Location = new System.Drawing.Point(3, 16);
-            this.panelSale.Name = "panelSale";
-            this.panelSale.Size = new System.Drawing.Size(1043, 662);
-            this.panelSale.TabIndex = 3;
-            this.panelSale.Visible = false;
+            this.saleDetailsDataGridViewTextBoxColumn1.DataPropertyName = "SaleDetails";
+            this.saleDetailsDataGridViewTextBoxColumn1.HeaderText = "SaleDetails";
+            this.saleDetailsDataGridViewTextBoxColumn1.Name = "saleDetailsDataGridViewTextBoxColumn1";
+            this.saleDetailsDataGridViewTextBoxColumn1.Visible = false;
             // 
-            // grpSaleTop
+            // ıdDataGridViewTextBoxColumn
             // 
-            this.grpSaleTop.Controls.Add(this.btnBack);
-            this.grpSaleTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpSaleTop.Location = new System.Drawing.Point(0, 0);
-            this.grpSaleTop.Name = "grpSaleTop";
-            this.grpSaleTop.Size = new System.Drawing.Size(1043, 86);
-            this.grpSaleTop.TabIndex = 0;
-            this.grpSaleTop.TabStop = false;
+            this.ıdDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.ıdDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.ıdDataGridViewTextBoxColumn.Name = "ıdDataGridViewTextBoxColumn";
+            this.ıdDataGridViewTextBoxColumn.Visible = false;
             // 
-            // grpSaleLeft
+            // createdAtDataGridViewTextBoxColumn2
             // 
-            this.grpSaleLeft.Controls.Add(this.lblPhone);
-            this.grpSaleLeft.Controls.Add(this.lblLastNAme);
-            this.grpSaleLeft.Controls.Add(this.label9);
-            this.grpSaleLeft.Controls.Add(this.label6);
-            this.grpSaleLeft.Controls.Add(this.lblEmail);
-            this.grpSaleLeft.Controls.Add(this.lblFirstName);
-            this.grpSaleLeft.Controls.Add(this.label7);
-            this.grpSaleLeft.Controls.Add(this.label3);
-            this.grpSaleLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.grpSaleLeft.Location = new System.Drawing.Point(0, 86);
-            this.grpSaleLeft.Name = "grpSaleLeft";
-            this.grpSaleLeft.Size = new System.Drawing.Size(233, 576);
-            this.grpSaleLeft.TabIndex = 1;
-            this.grpSaleLeft.TabStop = false;
-            this.grpSaleLeft.Text = "Cari Bilgisi";
+            this.createdAtDataGridViewTextBoxColumn2.DataPropertyName = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn2.HeaderText = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn2.Name = "createdAtDataGridViewTextBoxColumn2";
             // 
-            // GridViewSaleProduct
+            // modifiedAtDataGridViewTextBoxColumn2
             // 
-            this.GridViewSaleProduct.AutoGenerateColumns = false;
-            this.GridViewSaleProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.GridViewSaleProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridViewSaleProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnSaleCheckBox,
-            this.nameDataGridViewTextBoxColumn1,
-            this.descriptionDataGridViewTextBoxColumn1,
-            this.stockAmountDataGridViewTextBoxColumn1,
-            this.priceDataGridViewTextBoxColumn1,
-            this.barcodeNoDataGridViewTextBoxColumn1,
-            this.saleDetailsDataGridViewTextBoxColumn1,
-            this.ıdDataGridViewTextBoxColumn,
-            this.createdAtDataGridViewTextBoxColumn2,
-            this.modifiedAtDataGridViewTextBoxColumn2});
-            this.GridViewSaleProduct.DataSource = this.productBindingSource;
-            this.GridViewSaleProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridViewSaleProduct.Location = new System.Drawing.Point(233, 86);
-            this.GridViewSaleProduct.Name = "GridViewSaleProduct";
-            this.GridViewSaleProduct.Size = new System.Drawing.Size(810, 576);
-            this.GridViewSaleProduct.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Ad:";
-            // 
-            // lblFirstName
-            // 
-            this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(94, 69);
-            this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(35, 13);
-            this.lblFirstName.TabIndex = 1;
-            this.lblFirstName.Text = "label4";
-            // 
-            // lblLastNAme
-            // 
-            this.lblLastNAme.AutoSize = true;
-            this.lblLastNAme.Location = new System.Drawing.Point(94, 98);
-            this.lblLastNAme.Name = "lblLastNAme";
-            this.lblLastNAme.Size = new System.Drawing.Size(35, 13);
-            this.lblLastNAme.TabIndex = 3;
-            this.lblLastNAme.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 98);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Soyad:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(40, 131);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Email:";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(94, 131);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(35, 13);
-            this.lblEmail.TabIndex = 1;
-            this.lblEmail.Text = "label4";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(29, 160);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Telefon:";
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(94, 160);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(35, 13);
-            this.lblPhone.TabIndex = 3;
-            this.lblPhone.Text = "label5";
-            // 
-            // btnBack
-            // 
-            this.btnBack.Image = global::StockApp.Properties.Resources.back1;
-            this.btnBack.Location = new System.Drawing.Point(9, 25);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(66, 45);
-            this.btnBack.TabIndex = 2;
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.modifiedAtDataGridViewTextBoxColumn2.DataPropertyName = "ModifiedAt";
+            this.modifiedAtDataGridViewTextBoxColumn2.HeaderText = "ModifiedAt";
+            this.modifiedAtDataGridViewTextBoxColumn2.Name = "modifiedAtDataGridViewTextBoxColumn2";
+            this.modifiedAtDataGridViewTextBoxColumn2.Visible = false;
             // 
             // productBindingSource
             // 
@@ -710,70 +797,6 @@ namespace StockApp
             this.modifiedAtDataGridViewTextBoxColumn.Name = "modifiedAtDataGridViewTextBoxColumn";
             this.modifiedAtDataGridViewTextBoxColumn.Visible = false;
             // 
-            // ColumnSaleCheckBox
-            // 
-            this.ColumnSaleCheckBox.HeaderText = "Seç";
-            this.ColumnSaleCheckBox.Name = "ColumnSaleCheckBox";
-            this.ColumnSaleCheckBox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnSaleCheckBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            // 
-            // descriptionDataGridViewTextBoxColumn1
-            // 
-            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            // 
-            // stockAmountDataGridViewTextBoxColumn1
-            // 
-            this.stockAmountDataGridViewTextBoxColumn1.DataPropertyName = "StockAmount";
-            this.stockAmountDataGridViewTextBoxColumn1.HeaderText = "StockAmount";
-            this.stockAmountDataGridViewTextBoxColumn1.Name = "stockAmountDataGridViewTextBoxColumn1";
-            // 
-            // priceDataGridViewTextBoxColumn1
-            // 
-            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
-            // 
-            // barcodeNoDataGridViewTextBoxColumn1
-            // 
-            this.barcodeNoDataGridViewTextBoxColumn1.DataPropertyName = "BarcodeNo";
-            this.barcodeNoDataGridViewTextBoxColumn1.HeaderText = "BarcodeNo";
-            this.barcodeNoDataGridViewTextBoxColumn1.Name = "barcodeNoDataGridViewTextBoxColumn1";
-            // 
-            // saleDetailsDataGridViewTextBoxColumn1
-            // 
-            this.saleDetailsDataGridViewTextBoxColumn1.DataPropertyName = "SaleDetails";
-            this.saleDetailsDataGridViewTextBoxColumn1.HeaderText = "SaleDetails";
-            this.saleDetailsDataGridViewTextBoxColumn1.Name = "saleDetailsDataGridViewTextBoxColumn1";
-            this.saleDetailsDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // ıdDataGridViewTextBoxColumn
-            // 
-            this.ıdDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.ıdDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.ıdDataGridViewTextBoxColumn.Name = "ıdDataGridViewTextBoxColumn";
-            this.ıdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // createdAtDataGridViewTextBoxColumn2
-            // 
-            this.createdAtDataGridViewTextBoxColumn2.DataPropertyName = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn2.HeaderText = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn2.Name = "createdAtDataGridViewTextBoxColumn2";
-            // 
-            // modifiedAtDataGridViewTextBoxColumn2
-            // 
-            this.modifiedAtDataGridViewTextBoxColumn2.DataPropertyName = "ModifiedAt";
-            this.modifiedAtDataGridViewTextBoxColumn2.HeaderText = "ModifiedAt";
-            this.modifiedAtDataGridViewTextBoxColumn2.Name = "modifiedAtDataGridViewTextBoxColumn2";
-            this.modifiedAtDataGridViewTextBoxColumn2.Visible = false;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -789,6 +812,12 @@ namespace StockApp
             this.grpProduct.ResumeLayout(false);
             this.grpClient.ResumeLayout(false);
             this.grpMid.ResumeLayout(false);
+            this.panelSale.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewSaleProduct)).EndInit();
+            this.grpSaleLeft.ResumeLayout(false);
+            this.grpSaleLeft.PerformLayout();
+            this.grpSaleTop.ResumeLayout(false);
+            this.grpSaleTop.PerformLayout();
             this.panelClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).EndInit();
             this.panelClientTop.ResumeLayout(false);
@@ -797,11 +826,6 @@ namespace StockApp
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).EndInit();
             this.panelProductTop.ResumeLayout(false);
             this.panelProductTop.PerformLayout();
-            this.panelSale.ResumeLayout(false);
-            this.grpSaleTop.ResumeLayout(false);
-            this.grpSaleLeft.ResumeLayout(false);
-            this.grpSaleLeft.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewSaleProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -880,6 +904,8 @@ namespace StockApp
         private System.Windows.Forms.DataGridViewTextBoxColumn ıdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn modifiedAtDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtSalePrd;
     }
 }
 

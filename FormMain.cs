@@ -7,6 +7,7 @@ using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,7 @@ namespace StockApp
 
         private Client _selectedClient = null;
 
+        private List<Product> _saleProducts;
         public FormMain()
         {
             InitializeComponent();
@@ -242,7 +244,9 @@ namespace StockApp
                 lblEmail.Text = _selectedClient.Email;
                 lblPhone.Text = _selectedClient.Phone;
 
-                GridViewSaleProduct.DataSource = await _productRepository.GetAllAsync();
+
+                _saleProducts = await _productRepository.GetAllAsync();
+                GridViewSaleProduct.DataSource = _saleProducts;
 
             }
         }
@@ -283,7 +287,7 @@ namespace StockApp
             ClosePanelSale();
         }
 
-        private void ClosePanelSale() 
+        private void ClosePanelSale()
         {
             if (panelSale.Visible)
             {
@@ -295,8 +299,34 @@ namespace StockApp
 
                 _selectedClient = null;
                 btnSalePrd.Enabled = false;
+                _saleProducts.Clear();
             }
 
+        }
+
+        private void txtSalePrd_TextChanged(object sender, EventArgs e)
+        {
+            var term = txtSalePrd.Text;
+
+            if (txtSalePrd.Text.Length ==0)
+            {
+                GridViewSaleProduct.DataSource = _saleProducts;
+
+            }
+
+            if (term.Length < 3)
+                return;
+
+
+            var saleProducts = GridViewSaleProduct.DataSource as List<Product>;
+
+            if (saleProducts is null)
+            {
+                Alert.Show("Önce Ürün Girin!", FormAlert.AlertType.Warning);
+                return;
+            }
+            var filteredData = saleProducts.Where(x => x.Name.Contains(term)).ToList();
+            GridViewSaleProduct.DataSource = filteredData;
         }
     }
 }
