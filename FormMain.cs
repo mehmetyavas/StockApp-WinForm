@@ -24,6 +24,9 @@ namespace StockApp
         private readonly ClientRepository _clientRepository;
 
         private FormCreate _frmCreate;
+
+        private Client _selectedClient = null;
+
         public FormMain()
         {
             InitializeComponent();
@@ -50,7 +53,7 @@ namespace StockApp
                 }
             }
             PanelProductVisible();
-
+            ClosePanelSale();
 
         }
 
@@ -146,6 +149,7 @@ namespace StockApp
             }
 
             PanelClientVisible();
+            ClosePanelSale();
         }
 
         private void btnListSale_Click(object sender, EventArgs e)
@@ -179,28 +183,23 @@ namespace StockApp
 
         }
 
-
-
-
-        #endregion
-
-        #region Sale
-
-        #endregion
-
         private async void dataGridViewClient_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var column = dataGridViewClient.Columns[e.ColumnIndex];
+
+
+
+
 
 
             if (!(column is DataGridViewButtonColumn && e.RowIndex >= 0))
             {
                 return;
             }
-
             var row = dataGridViewClient.Rows[e.RowIndex];
 
             var guid = Guid.Parse(row.GetRowCellValue(nameof(idClientDataGridViewTextBoxColumn)));
+
 
 
             var updatedPrd = (dataGridViewClient.DataSource as List<Client>)
@@ -224,6 +223,80 @@ namespace StockApp
             }
 
             dataGridViewClient.DataSource = await _clientRepository.GetAllAsync();
+        }
+
+
+
+
+        #endregion
+
+        #region Sale
+        private async void btnSalePrd_Click(object sender, EventArgs e)
+        {
+            if (_selectedClient != null)
+            {
+                panelSale.Visible = true;
+
+                lblFirstName.Text = _selectedClient.FirstName;
+                lblLastNAme.Text = _selectedClient.LastName;
+                lblEmail.Text = _selectedClient.Email;
+                lblPhone.Text = _selectedClient.Phone;
+
+                GridViewSaleProduct.DataSource = await _productRepository.GetAllAsync();
+
+            }
+        }
+
+        #endregion
+
+        private void dataGridViewClient_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var column = dataGridViewClient.Columns[e.ColumnIndex];
+
+
+
+
+            if ((column is DataGridViewButtonColumn) || e.RowIndex < 0)
+            {
+                return;
+            }
+
+
+            var row = dataGridViewClient.Rows[e.RowIndex];
+
+            var guid = Guid.Parse(row.GetRowCellValue(nameof(idClientDataGridViewTextBoxColumn)));
+
+            btnSalePrd.Enabled = guid == null ? false : true;
+
+
+            var client = (dataGridViewClient.DataSource as List<Client>)
+                     .Single(x => x.Id == guid);
+
+            _selectedClient = client;
+
+
+            Alert.Show(guid.ToString() + "\n " + row.GetRowCellValue(nameof(firstNameDataGridViewTextBoxColumn)), FormAlert.AlertType.Success);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            ClosePanelSale();
+        }
+
+        private void ClosePanelSale() 
+        {
+            if (panelSale.Visible)
+            {
+                panelSale.Visible = false;
+                lblFirstName.Text = null;
+                lblLastNAme.Text = null;
+                lblEmail.Text = null;
+                lblPhone.Text = null;
+
+                _selectedClient = null;
+                btnSalePrd.Enabled = false;
+            }
+
         }
     }
 }
