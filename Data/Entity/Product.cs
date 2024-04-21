@@ -12,16 +12,10 @@ namespace StockApp.Data.Entity
     public class Product : BaseEntity<Guid>
     {
 
-        public Product() 
-        {
-            Slug = Name.ToSlug();
-        }
+      
 
         [Required, MaxLength(100)]
         public string Name { get; set; }
-
-        [Required, MaxLength(200)]
-        public string Slug { get; private set; }
 
         [Required, MaxLength(150)]
         public string Description { get; set; }

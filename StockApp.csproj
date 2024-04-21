@@ -78,6 +78,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAlert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlert.designer.cs">
+      <DependentUpon>FormAlert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202404201502292_Initial.cs" />
     <Compile Include="Migrations\202404201502292_Initial.designer.cs">
       <DependentUpon>202404201502292_Initial.cs</DependentUpon>
@@ -86,10 +92,15 @@
     <Compile Include="Migrations\202404201543246_SaleSaleDetailProductTable.designer.cs">
       <DependentUpon>202404201543246_SaleSaleDetailProductTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404202329552_deleteSlug.cs" />
+    <Compile Include="Migrations\202404202329552_deleteSlug.designer.cs">
+      <DependentUpon>202404202329552_deleteSlug.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CustomAttributes\PositiveNumberAttribute.cs" />
+    <Compile Include="Utils\Extensions\DataGridViewExtensions.cs" />
     <Compile Include="Utils\Extensions\StringExtensions.cs" />
     <EmbeddedResource Include="FormCreateClient.resx">
       <DependentUpon>FormCreateClient.cs</DependentUpon>
@@ -97,11 +108,17 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAlert.resx">
+      <DependentUpon>FormAlert.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404201502292_Initial.resx">
       <DependentUpon>202404201502292_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404201543246_SaleSaleDetailProductTable.resx">
       <DependentUpon>202404201543246_SaleSaleDetailProductTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404202329552_deleteSlug.resx">
+      <DependentUpon>202404202329552_deleteSlug.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\StockApp.Data.Entity.Product.datasource" />
@@ -127,7 +145,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

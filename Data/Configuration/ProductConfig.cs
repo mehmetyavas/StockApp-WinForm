@@ -13,7 +13,6 @@ namespace StockApp.Data.Configuration
             HasIndex(x => x.Id);
             HasIndex(x => x.BarcodeNo);
             HasIndex(x => x.Name);
-            HasIndex(x => x.Slug);
 
         }
     }

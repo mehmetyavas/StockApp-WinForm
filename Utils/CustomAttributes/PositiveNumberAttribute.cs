@@ -13,7 +13,7 @@ namespace StockApp.Utils.CustomAttributes
         {
             if (value is decimal ) 
             {
-                if ((int)value < 0) 
+                if ((decimal)value < 0) 
                 {
                     throw new Exception("Value Must Be Positive!");
                 }
