@@ -31,6 +31,7 @@ namespace StockApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpTop = new System.Windows.Forms.GroupBox();
             this.grpSale = new System.Windows.Forms.GroupBox();
             this.btnListSale = new System.Windows.Forms.Button();
@@ -42,12 +43,8 @@ namespace StockApp
             this.btnListClient = new System.Windows.Forms.Button();
             this.btnClientCreate = new System.Windows.Forms.Button();
             this.grpMid = new System.Windows.Forms.GroupBox();
-            this.panelClient = new System.Windows.Forms.Panel();
+            this.panelProduct = new System.Windows.Forms.Panel();
             this.dataGridProduct = new System.Windows.Forms.DataGridView();
-            this.panelClientTop = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcodeNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,15 +56,19 @@ namespace StockApp
             this.modifiedAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panelProductTop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.grpTop.SuspendLayout();
             this.grpSale.SuspendLayout();
             this.grpProduct.SuspendLayout();
             this.grpClient.SuspendLayout();
             this.grpMid.SuspendLayout();
-            this.panelClient.SuspendLayout();
+            this.panelProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
-            this.panelClientTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            this.panelProductTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpTop
@@ -178,7 +179,7 @@ namespace StockApp
             // 
             // grpMid
             // 
-            this.grpMid.Controls.Add(this.panelClient);
+            this.grpMid.Controls.Add(this.panelProduct);
             this.grpMid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpMid.Location = new System.Drawing.Point(0, 112);
             this.grpMid.Name = "grpMid";
@@ -186,16 +187,16 @@ namespace StockApp
             this.grpMid.TabIndex = 1;
             this.grpMid.TabStop = false;
             // 
-            // panelClient
+            // panelProduct
             // 
-            this.panelClient.Controls.Add(this.dataGridProduct);
-            this.panelClient.Controls.Add(this.panelClientTop);
-            this.panelClient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelClient.Location = new System.Drawing.Point(3, 16);
-            this.panelClient.Name = "panelClient";
-            this.panelClient.Size = new System.Drawing.Size(1043, 500);
-            this.panelClient.TabIndex = 0;
-            this.panelClient.Visible = false;
+            this.panelProduct.Controls.Add(this.dataGridProduct);
+            this.panelProduct.Controls.Add(this.panelProductTop);
+            this.panelProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelProduct.Location = new System.Drawing.Point(3, 16);
+            this.panelProduct.Name = "panelProduct";
+            this.panelProduct.Size = new System.Drawing.Size(1043, 500);
+            this.panelProduct.TabIndex = 0;
+            this.panelProduct.Visible = false;
             // 
             // dataGridProduct
             // 
@@ -221,39 +222,6 @@ namespace StockApp
             this.dataGridProduct.Size = new System.Drawing.Size(1043, 437);
             this.dataGridProduct.TabIndex = 2;
             this.dataGridProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduct_CellContentClick);
-            // 
-            // panelClientTop
-            // 
-            this.panelClientTop.AutoScroll = true;
-            this.panelClientTop.Controls.Add(this.label1);
-            this.panelClientTop.Controls.Add(this.txtSearch);
-            this.panelClientTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelClientTop.Location = new System.Drawing.Point(0, 0);
-            this.panelClientTop.Name = "panelClientTop";
-            this.panelClientTop.Size = new System.Drawing.Size(1043, 63);
-            this.panelClientTop.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.label1.Location = new System.Drawing.Point(9, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "SEARCH:";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtSearch.Location = new System.Drawing.Point(95, 19);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(257, 26);
-            this.txtSearch.TabIndex = 0;
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(StockApp.Data.Entity.Product);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -320,20 +288,54 @@ namespace StockApp
             // 
             // columnUpdate
             // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
+            this.columnUpdate.DefaultCellStyle = dataGridViewCellStyle2;
             this.columnUpdate.FillWeight = 15F;
             this.columnUpdate.HeaderText = "Güncelle";
             this.columnUpdate.Name = "columnUpdate";
             this.columnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            columnUpdate.DefaultCellStyle.ForeColor = Color.Green;
             // 
             // columnDelete
             // 
             this.columnDelete.FillWeight = 10F;
             this.columnDelete.HeaderText = "Sil";
             this.columnDelete.Name = "columnDelete";
-
-            columnUpdate.DefaultCellStyle.BackColor = Color.Red;
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(StockApp.Data.Entity.Product);
+            // 
+            // panelProductTop
+            // 
+            this.panelProductTop.AutoScroll = true;
+            this.panelProductTop.Controls.Add(this.label1);
+            this.panelProductTop.Controls.Add(this.txtSearch);
+            this.panelProductTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelProductTop.Location = new System.Drawing.Point(0, 0);
+            this.panelProductTop.Name = "panelProductTop";
+            this.panelProductTop.Size = new System.Drawing.Size(1043, 63);
+            this.panelProductTop.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label1.Location = new System.Drawing.Point(9, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "SEARCH:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtSearch.Location = new System.Drawing.Point(95, 19);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(257, 26);
+            this.txtSearch.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -350,11 +352,11 @@ namespace StockApp
             this.grpProduct.ResumeLayout(false);
             this.grpClient.ResumeLayout(false);
             this.grpMid.ResumeLayout(false);
-            this.panelClient.ResumeLayout(false);
+            this.panelProduct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).EndInit();
-            this.panelClientTop.ResumeLayout(false);
-            this.panelClientTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            this.panelProductTop.ResumeLayout(false);
+            this.panelProductTop.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -372,8 +374,8 @@ namespace StockApp
         private System.Windows.Forms.Button btnListClient;
         private System.Windows.Forms.Button btnClientCreate;
         private System.Windows.Forms.GroupBox grpMid;
-        private System.Windows.Forms.Panel panelClient;
-        private System.Windows.Forms.Panel panelClientTop;
+        private System.Windows.Forms.Panel panelProduct;
+        private System.Windows.Forms.Panel panelProductTop;
         private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;

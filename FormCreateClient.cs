@@ -9,36 +9,37 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockApp.Data.Context;
 using StockApp.Data.Entity;
+using StockApp.Data.Repository;
 using StockApp.Utils.Extensions;
 
 namespace StockApp
 {
     public partial class FormCreateProduct : Form
     {
-
+        ProductRepository _productRepository;
         public FormCreateProduct()
         {
             InitializeComponent();
+            _productRepository = new ProductRepository();
         }
 
         private async void btnProductCreate_Click(object sender, EventArgs e)
         {
-            using (var context = new StockDbContext())
+
+
+            var product = new Product()
             {
+                Id = Guid.NewGuid(),
+                Name = txtProductName.Text,
+                Description = txtProductDesc.Text,
+                StockAmount = int.Parse(txtProductAmount.Text),
+                Price = decimal.Parse(txtProductPrice.Text),
+                BarcodeNo = txtProductBarcode.Text,
+            };
 
-                var deneme = context.Products.Add(new Product()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = txtProductName.Text,
-                    Description = txtProductDesc.Text,
-                    StockAmount = int.Parse(txtProductAmount.Text),
-                    Price = decimal.Parse(txtProductPrice.Text),
-                    BarcodeNo = txtProductBarcode.Text,
-                });
+            await _productRepository.AddAsync(product);
 
-                await context.SaveChangesAsync();
 
-            }
 
 
             Dispose();

@@ -6,11 +6,13 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockApp.Data.Context;
 using StockApp.Data.Entity;
+using StockApp.Data.Repository;
 using StockApp.Utils.Extensions;
 using URETIM;
 
@@ -18,54 +20,33 @@ namespace StockApp
 {
     public partial class FormMain : Form
     {
-
-
-
+      private readonly  ProductRepository _productRepository;
         public FormMain()
         {
             InitializeComponent();
+            _productRepository = new ProductRepository();
 
         }
 
-        public void Alert(string msg, FormAlert.AlertType type)
-        {
-            FormAlert frm = new FormAlert();
-            frm.showAlert(msg, type);
-        }
-
-        private void btnListClient_Click(object sender, EventArgs e)
-        {
-
-            Alert("deneme", FormAlert.AlertType.Success);
-        }
+        #region Product
 
         private async void btnListProduct_Click(object sender, EventArgs e)
         {
-            using (var context = new StockDbContext())
-            {
 
-                if ((dataGridProduct.DataSource as List<Product> ?? new List<Product>()) is List<Product> products)
+            if ((dataGridProduct.DataSource as List<Product> ?? new List<Product>()) is List<Product> products)
+            {
+                if (products.Any())
                 {
-                    if (!products.Any())
-                    {
-                        dataGridProduct.DataSource = await context.Products.ToListAsync();
-                    }
+                    return;
                 }
+                dataGridProduct.DataSource = await _productRepository.GetAllAsync();
             }
 
-
-            if (!panelClient.Visible)
+            if (!panelProduct.Visible)
             {
-                panelClient.Visible = true;
+                panelProduct.Visible = true;
             }
-
         }
-
-
-        private void btnListSale_Click(object sender, EventArgs e)
-        {
-        }
-
 
         private void btnProductCreate_Click(object sender, EventArgs e)
         {
@@ -77,67 +58,62 @@ namespace StockApp
         private async void dataGridProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-
-
             var column = dataGridProduct.Columns[e.ColumnIndex];
 
 
-            if (column is DataGridViewButtonColumn && e.RowIndex >= 0)
+            if (!(column is DataGridViewButtonColumn && e.RowIndex >= 0))
             {
-                using (var context = new StockDbContext())
-                {
-                    var row = dataGridProduct.Rows[e.RowIndex];
+                return;
+            }
 
-                    var guid = Guid.Parse(row.GetRowCellValue(nameof(idDataGridViewTextBoxColumn)));
+            var row = dataGridProduct.Rows[e.RowIndex];
 
-
-
-                    var prdToProccess = await context.Products
-                        .SingleAsync(x => x.Id == guid);
+            var guid = Guid.Parse(row.GetRowCellValue(nameof(idDataGridViewTextBoxColumn)));
 
 
-                    if (column.Name == nameof(columnUpdate))
-                    {
+            var updatedPrd = (dataGridProduct.DataSource as List<Product>)
+                     .Single(x => x.Id == guid);
 
-                        var updatedPrd = (dataGridProduct.DataSource as List<Product>)
-                            .Single(x => x.Id == guid);
+            if (column.Name == nameof(columnUpdate))
+            {
 
-                        prdToProccess.Name = updatedPrd.Name;
-                        prdToProccess.Description = updatedPrd.Description;
-                        prdToProccess.BarcodeNo = updatedPrd.BarcodeNo;
-                        prdToProccess.StockAmount = updatedPrd.StockAmount;
-                        prdToProccess.Price = updatedPrd.Price;
-                        prdToProccess.ModifiedAt = DateTime.Now;
+                await _productRepository.UpdateAsync(updatedPrd);
 
-                        context.Products.AddOrUpdate(prdToProccess);
-
-                        await context.SaveChangesAsync();
-
-                        Alert("Kayıt Güncellendi!", FormAlert.AlertType.Success);
-
-                    }
-                    if (column.Name == nameof(columnDelete))
-                    {
-                        context.Products.Remove(prdToProccess);
-
-
-
-                        await context.SaveChangesAsync();
-
-                        Alert("Kayıt Silindi!", FormAlert.AlertType.Success);
-
-                    }
-
-
-                    dataGridProduct.DataSource = await context.Products.ToListAsync();
-
-                    context.Dispose();
-
-                }
-
-
+                Alert.Show("Kayıt Güncellendi!", FormAlert.AlertType.Success);
 
             }
+            if (column.Name == nameof(columnDelete))
+            {
+
+                await _productRepository.DeleteAsync(updatedPrd);
+
+                Alert.Show("Kayıt Silindi!", FormAlert.AlertType.Success);
+
+            }
+
+            dataGridProduct.DataSource = await _productRepository.GetAllAsync();
+
         }
+
+        #endregion
+
+
+
+        #region Client
+        private void btnListClient_Click(object sender, EventArgs e)
+        {
+
+            Alert.Show("deneme", FormAlert.AlertType.Success);
+        }
+
+        private void btnListSale_Click(object sender, EventArgs e)
+        {
+        }
+        #endregion
+
+
+        #region Sale
+
+        #endregion
     }
 }

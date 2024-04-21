@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockApp.Data.Entity
 {
-    public class BaseEntity<T>
+    public class BaseEntity<T>: IEntity
     {
 
         public T Id { get; set; }

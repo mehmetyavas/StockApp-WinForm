@@ -63,9 +63,13 @@
     <Compile Include="Data\Context\StockDbContext.cs" />
     <Compile Include="Data\Entity\BaseEntity.cs" />
     <Compile Include="Data\Entity\Client.cs" />
+    <Compile Include="Data\Entity\IEntity.cs" />
     <Compile Include="Data\Entity\Product.cs" />
     <Compile Include="Data\Entity\Sale.cs" />
     <Compile Include="Data\Entity\SaleDetail.cs" />
+    <Compile Include="Data\Repository\BaseRepository.cs" />
+    <Compile Include="Data\Repository\IRepository.cs" />
+    <Compile Include="Data\Repository\ProductRepository.cs" />
     <Compile Include="FormCreateClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +104,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CustomAttributes\PositiveNumberAttribute.cs" />
+    <Compile Include="Utils\Helpers\Alert.cs" />
     <Compile Include="Utils\Extensions\DataGridViewExtensions.cs" />
     <Compile Include="Utils\Extensions\StringExtensions.cs" />
     <EmbeddedResource Include="FormCreateClient.resx">
