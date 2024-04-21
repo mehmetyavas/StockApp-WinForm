@@ -8,5 +8,8 @@ namespace StockApp.Data.Entity
 {
     public interface IEntity
     {
+
+         DateTime CreatedAt { get; set; }
+         DateTime? ModifiedAt { get; set; }
     }
 }

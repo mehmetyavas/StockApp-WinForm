@@ -28,6 +28,7 @@ namespace StockApp.Data.Repository
         {
             using (var context = new StockDbContext())
             {
+                entity.ModifiedAt = DateTime.Now;
 
                 context.Set<TEntity>().AddOrUpdate(entity);
 

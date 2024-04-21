@@ -111,6 +111,7 @@ namespace StockApp
         }
         #endregion
 
+        
 
         #region Sale
 
