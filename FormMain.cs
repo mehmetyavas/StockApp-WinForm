@@ -15,7 +15,6 @@ using StockApp.Data.Context;
 using StockApp.Data.Entity;
 using StockApp.Data.Repository;
 using StockApp.Utils.Extensions;
-using URETIM;
 
 namespace StockApp
 {
@@ -28,7 +27,6 @@ namespace StockApp
 
         private Client _selectedClient = null;
 
-        private List<Product> _saleProducts;
         public FormMain()
         {
             InitializeComponent();
@@ -145,7 +143,8 @@ namespace StockApp
             {
                 if (!clients.Any())
                 {
-                    dataGridViewClient.DataSource = await _clientRepository.GetAllAsync();
+                    var deneme = await _clientRepository.GetAllAsync(); 
+                    dataGridViewClient.DataSource = deneme;
 
                 }
             }
@@ -245,13 +244,11 @@ namespace StockApp
                 lblPhone.Text = _selectedClient.Phone;
 
 
-                _saleProducts = await _productRepository.GetAllAsync();
-                GridViewSaleProduct.DataSource = _saleProducts;
+                GridViewSaleProduct.DataSource = await _productRepository.GetAllAsync();
 
             }
         }
 
-        #endregion
 
         private void dataGridViewClient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -281,6 +278,7 @@ namespace StockApp
 
             Alert.Show(guid.ToString() + "\n " + row.GetRowCellValue(nameof(firstNameDataGridViewTextBoxColumn)), FormAlert.AlertType.Success);
         }
+        #endregion
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -299,18 +297,17 @@ namespace StockApp
 
                 _selectedClient = null;
                 btnSalePrd.Enabled = false;
-                _saleProducts.Clear();
             }
 
         }
 
-        private void txtSalePrd_TextChanged(object sender, EventArgs e)
+        private async void txtSalePrd_TextChanged(object sender, EventArgs e)
         {
             var term = txtSalePrd.Text;
 
-            if (txtSalePrd.Text.Length ==0)
+            if (txtSalePrd.Text.Length == 0)
             {
-                GridViewSaleProduct.DataSource = _saleProducts;
+                GridViewSaleProduct.DataSource = await _productRepository.GetAllAsync();
 
             }
 
@@ -328,5 +325,67 @@ namespace StockApp
             var filteredData = saleProducts.Where(x => x.Name.Contains(term)).ToList();
             GridViewSaleProduct.DataSource = filteredData;
         }
+
+        private void btnSelectedSalePrd_Click(object sender, EventArgs e)
+        {
+            var deneme = _selectedProducts;
+        }
+        List<Product> _selectedProducts = new List<Product>();
+
+        private void GridViewSaleProduct_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var column = GridViewSaleProduct.Columns[e.ColumnIndex];
+
+
+            if (!(column is DataGridViewCheckBoxColumn) || e.RowIndex < 0)
+            {
+                return;
+            }
+
+            if (column.Name == nameof(ColumnSaleCheckBox))
+            {
+
+
+                var row = GridViewSaleProduct.Rows[e.RowIndex];
+                var checkBoxCell = GridViewSaleProduct.Rows[e.RowIndex].Cells[nameof(ColumnSaleCheckBox)].Value;
+
+                if (!(checkBoxCell is bool))
+                {
+                    return;
+                }
+
+                var guid = Guid.Parse(row.GetRowCellValue(nameof(idDataGridViewSalePrdTextBoxColumn)));
+
+                var prd = (GridViewSaleProduct.DataSource as List<Product>).Single(x => x.Id == guid);
+
+
+
+                var checkedCell = Convert.ToBoolean(checkBoxCell);
+
+                if (checkedCell)
+                {
+                    if (!_selectedProducts.Contains(prd))
+                    {
+                        _selectedProducts.Add(prd);
+
+                    }
+                }
+                else
+                {
+                    if (_selectedProducts.Contains(prd))
+                    {
+                        _selectedProducts.Remove(prd);
+                    }
+
+                }
+
+
+
+                Alert.Show("", FormAlert.AlertType.Success);
+            }
+
+        }
+
+     
     }
 }

@@ -31,10 +31,9 @@ namespace StockApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpTop = new System.Windows.Forms.GroupBox();
             this.grpSale = new System.Windows.Forms.GroupBox();
-            this.btnListSale = new System.Windows.Forms.Button();
             this.btnSale = new System.Windows.Forms.Button();
             this.grpProduct = new System.Windows.Forms.GroupBox();
             this.btnListProduct = new System.Windows.Forms.Button();
@@ -42,10 +41,12 @@ namespace StockApp
             this.grpClient = new System.Windows.Forms.GroupBox();
             this.btnListClient = new System.Windows.Forms.Button();
             this.btnClientCreate = new System.Windows.Forms.Button();
+            this.btnSelectedSalePrd = new System.Windows.Forms.Button();
             this.grpMid = new System.Windows.Forms.GroupBox();
             this.panelSale = new System.Windows.Forms.Panel();
             this.GridViewSaleProduct = new System.Windows.Forms.DataGridView();
             this.ColumnSaleCheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnAdet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpSaleLeft = new System.Windows.Forms.GroupBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblLastNAme = new System.Windows.Forms.Label();
@@ -76,25 +77,24 @@ namespace StockApp
             this.btnPrdRefresh = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrdSearch = new System.Windows.Forms.TextBox();
+            this.modifiedAtDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdAtDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcodeNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockAmountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.barcodeNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleDetailsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ıdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewSalePrdTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdAtDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedAtDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdAtDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modifiedAtDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.barcodeNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,6 +104,8 @@ namespace StockApp
             this.saleDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productGridBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grpTop.SuspendLayout();
             this.grpSale.SuspendLayout();
             this.grpProduct.SuspendLayout();
@@ -120,6 +122,7 @@ namespace StockApp
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
             this.panelProductTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productGridBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,7 +140,6 @@ namespace StockApp
             // 
             // grpSale
             // 
-            this.grpSale.Controls.Add(this.btnListSale);
             this.grpSale.Controls.Add(this.btnSale);
             this.grpSale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpSale.Location = new System.Drawing.Point(697, 16);
@@ -147,15 +149,6 @@ namespace StockApp
             this.grpSale.TabStop = false;
             this.grpSale.Text = "Satış";
             this.grpSale.Visible = false;
-            // 
-            // btnListSale
-            // 
-            this.btnListSale.Location = new System.Drawing.Point(189, 24);
-            this.btnListSale.Name = "btnListSale";
-            this.btnListSale.Size = new System.Drawing.Size(109, 50);
-            this.btnListSale.TabIndex = 1;
-            this.btnListSale.Text = "Cari Listele";
-            this.btnListSale.UseVisualStyleBackColor = true;
             // 
             // btnSale
             // 
@@ -230,6 +223,16 @@ namespace StockApp
             this.btnClientCreate.UseVisualStyleBackColor = true;
             this.btnClientCreate.Click += new System.EventHandler(this.btnClientCreate_Click);
             // 
+            // btnSelectedSalePrd
+            // 
+            this.btnSelectedSalePrd.Location = new System.Drawing.Point(928, 30);
+            this.btnSelectedSalePrd.Name = "btnSelectedSalePrd";
+            this.btnSelectedSalePrd.Size = new System.Drawing.Size(109, 50);
+            this.btnSelectedSalePrd.TabIndex = 1;
+            this.btnSelectedSalePrd.Text = "Seçili Ürünleri Sat";
+            this.btnSelectedSalePrd.UseVisualStyleBackColor = true;
+            this.btnSelectedSalePrd.Click += new System.EventHandler(this.btnSelectedSalePrd_Click);
+            // 
             // grpMid
             // 
             this.grpMid.Controls.Add(this.panelSale);
@@ -261,21 +264,22 @@ namespace StockApp
             this.GridViewSaleProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridViewSaleProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSaleCheckBox,
+            this.ColumnAdet,
+            this.barcodeNoDataGridViewTextBoxColumn1,
             this.nameDataGridViewTextBoxColumn1,
             this.descriptionDataGridViewTextBoxColumn1,
             this.stockAmountDataGridViewTextBoxColumn1,
             this.priceDataGridViewTextBoxColumn1,
-            this.barcodeNoDataGridViewTextBoxColumn1,
             this.saleDetailsDataGridViewTextBoxColumn1,
-            this.ıdDataGridViewTextBoxColumn,
+            this.idDataGridViewSalePrdTextBoxColumn,
             this.createdAtDataGridViewTextBoxColumn2,
             this.modifiedAtDataGridViewTextBoxColumn2});
             this.GridViewSaleProduct.DataSource = this.productBindingSource;
-            this.GridViewSaleProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridViewSaleProduct.Location = new System.Drawing.Point(233, 86);
             this.GridViewSaleProduct.Name = "GridViewSaleProduct";
             this.GridViewSaleProduct.Size = new System.Drawing.Size(810, 576);
             this.GridViewSaleProduct.TabIndex = 2;
+            this.GridViewSaleProduct.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewSaleProduct_CellValueChanged);
             // 
             // ColumnSaleCheckBox
             // 
@@ -283,6 +287,12 @@ namespace StockApp
             this.ColumnSaleCheckBox.Name = "ColumnSaleCheckBox";
             this.ColumnSaleCheckBox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnSaleCheckBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColumnAdet
+            // 
+            this.ColumnAdet.HeaderText = "Adet";
+            this.ColumnAdet.Name = "ColumnAdet";
+            this.ColumnAdet.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // grpSaleLeft
             // 
@@ -376,6 +386,7 @@ namespace StockApp
             // 
             // grpSaleTop
             // 
+            this.grpSaleTop.Controls.Add(this.btnSelectedSalePrd);
             this.grpSaleTop.Controls.Add(this.label4);
             this.grpSaleTop.Controls.Add(this.txtSalePrd);
             this.grpSaleTop.Controls.Add(this.btnBack);
@@ -556,10 +567,10 @@ namespace StockApp
             // 
             // columnUpdate
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
-            this.columnUpdate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Green;
+            this.columnUpdate.DefaultCellStyle = dataGridViewCellStyle1;
             this.columnUpdate.FillWeight = 15F;
             this.columnUpdate.HeaderText = "Güncelle";
             this.columnUpdate.Name = "columnUpdate";
@@ -612,6 +623,69 @@ namespace StockApp
             this.txtPrdSearch.Size = new System.Drawing.Size(257, 26);
             this.txtPrdSearch.TabIndex = 0;
             // 
+            // modifiedAtDataGridViewTextBoxColumn1
+            // 
+            this.modifiedAtDataGridViewTextBoxColumn1.DataPropertyName = "ModifiedAt";
+            this.modifiedAtDataGridViewTextBoxColumn1.HeaderText = "ModifiedAt";
+            this.modifiedAtDataGridViewTextBoxColumn1.Name = "modifiedAtDataGridViewTextBoxColumn1";
+            this.modifiedAtDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // createdAtDataGridViewTextBoxColumn1
+            // 
+            this.createdAtDataGridViewTextBoxColumn1.DataPropertyName = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn1.FillWeight = 36.36178F;
+            this.createdAtDataGridViewTextBoxColumn1.HeaderText = "CreatedAt";
+            this.createdAtDataGridViewTextBoxColumn1.Name = "createdAtDataGridViewTextBoxColumn1";
+            // 
+            // salesDataGridViewTextBoxColumn
+            // 
+            this.salesDataGridViewTextBoxColumn.DataPropertyName = "Sales";
+            this.salesDataGridViewTextBoxColumn.FillWeight = 35.28266F;
+            this.salesDataGridViewTextBoxColumn.HeaderText = "Sales";
+            this.salesDataGridViewTextBoxColumn.Name = "salesDataGridViewTextBoxColumn";
+            this.salesDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.FillWeight = 36.36178F;
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.FillWeight = 36.36178F;
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.FillWeight = 36.36178F;
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.FillWeight = 36.36178F;
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // idClientDataGridViewTextBoxColumn
+            // 
+            this.idClientDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idClientDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idClientDataGridViewTextBoxColumn.Name = "idClientDataGridViewTextBoxColumn";
+            this.idClientDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // barcodeNoDataGridViewTextBoxColumn1
+            // 
+            this.barcodeNoDataGridViewTextBoxColumn1.DataPropertyName = "BarcodeNo";
+            this.barcodeNoDataGridViewTextBoxColumn1.HeaderText = "BarcodeNo";
+            this.barcodeNoDataGridViewTextBoxColumn1.Name = "barcodeNoDataGridViewTextBoxColumn1";
+            // 
             // nameDataGridViewTextBoxColumn1
             // 
             this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
@@ -629,18 +703,13 @@ namespace StockApp
             this.stockAmountDataGridViewTextBoxColumn1.DataPropertyName = "StockAmount";
             this.stockAmountDataGridViewTextBoxColumn1.HeaderText = "StockAmount";
             this.stockAmountDataGridViewTextBoxColumn1.Name = "stockAmountDataGridViewTextBoxColumn1";
+            this.stockAmountDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // priceDataGridViewTextBoxColumn1
             // 
             this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
             this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
             this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
-            // 
-            // barcodeNoDataGridViewTextBoxColumn1
-            // 
-            this.barcodeNoDataGridViewTextBoxColumn1.DataPropertyName = "BarcodeNo";
-            this.barcodeNoDataGridViewTextBoxColumn1.HeaderText = "BarcodeNo";
-            this.barcodeNoDataGridViewTextBoxColumn1.Name = "barcodeNoDataGridViewTextBoxColumn1";
             // 
             // saleDetailsDataGridViewTextBoxColumn1
             // 
@@ -649,18 +718,19 @@ namespace StockApp
             this.saleDetailsDataGridViewTextBoxColumn1.Name = "saleDetailsDataGridViewTextBoxColumn1";
             this.saleDetailsDataGridViewTextBoxColumn1.Visible = false;
             // 
-            // ıdDataGridViewTextBoxColumn
+            // idDataGridViewSalePrdTextBoxColumn
             // 
-            this.ıdDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.ıdDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.ıdDataGridViewTextBoxColumn.Name = "ıdDataGridViewTextBoxColumn";
-            this.ıdDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewSalePrdTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewSalePrdTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewSalePrdTextBoxColumn.Name = "idDataGridViewSalePrdTextBoxColumn";
+            this.idDataGridViewSalePrdTextBoxColumn.Visible = false;
             // 
             // createdAtDataGridViewTextBoxColumn2
             // 
             this.createdAtDataGridViewTextBoxColumn2.DataPropertyName = "CreatedAt";
             this.createdAtDataGridViewTextBoxColumn2.HeaderText = "CreatedAt";
             this.createdAtDataGridViewTextBoxColumn2.Name = "createdAtDataGridViewTextBoxColumn2";
+            this.createdAtDataGridViewTextBoxColumn2.Visible = false;
             // 
             // modifiedAtDataGridViewTextBoxColumn2
             // 
@@ -672,67 +742,6 @@ namespace StockApp
             // productBindingSource
             // 
             this.productBindingSource.DataSource = typeof(StockApp.Data.Entity.Product);
-            // 
-            // idClientDataGridViewTextBoxColumn
-            // 
-            this.idClientDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idClientDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idClientDataGridViewTextBoxColumn.Name = "idClientDataGridViewTextBoxColumn";
-            this.idClientDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.FillWeight = 36.36178F;
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.FillWeight = 36.36178F;
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.FillWeight = 36.36178F;
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.FillWeight = 36.36178F;
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            // 
-            // salesDataGridViewTextBoxColumn
-            // 
-            this.salesDataGridViewTextBoxColumn.DataPropertyName = "Sales";
-            this.salesDataGridViewTextBoxColumn.FillWeight = 35.28266F;
-            this.salesDataGridViewTextBoxColumn.HeaderText = "Sales";
-            this.salesDataGridViewTextBoxColumn.Name = "salesDataGridViewTextBoxColumn";
-            this.salesDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // createdAtDataGridViewTextBoxColumn1
-            // 
-            this.createdAtDataGridViewTextBoxColumn1.DataPropertyName = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn1.FillWeight = 36.36178F;
-            this.createdAtDataGridViewTextBoxColumn1.HeaderText = "CreatedAt";
-            this.createdAtDataGridViewTextBoxColumn1.Name = "createdAtDataGridViewTextBoxColumn1";
-            // 
-            // modifiedAtDataGridViewTextBoxColumn1
-            // 
-            this.modifiedAtDataGridViewTextBoxColumn1.DataPropertyName = "ModifiedAt";
-            this.modifiedAtDataGridViewTextBoxColumn1.HeaderText = "ModifiedAt";
-            this.modifiedAtDataGridViewTextBoxColumn1.Name = "modifiedAtDataGridViewTextBoxColumn1";
-            this.modifiedAtDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // clientBindingSource
-            // 
-            this.clientBindingSource.DataSource = typeof(StockApp.Data.Entity.Client);
             // 
             // barcodeNoDataGridViewTextBoxColumn
             // 
@@ -796,6 +805,11 @@ namespace StockApp
             this.modifiedAtDataGridViewTextBoxColumn.HeaderText = "ModifiedAt";
             this.modifiedAtDataGridViewTextBoxColumn.Name = "modifiedAtDataGridViewTextBoxColumn";
             this.modifiedAtDataGridViewTextBoxColumn.Visible = false;
+
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataSource = typeof(StockApp.Data.Entity.Client);
             // 
             // FormMain
             // 
@@ -827,6 +841,7 @@ namespace StockApp
             this.panelProductTop.ResumeLayout(false);
             this.panelProductTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productGridBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -838,7 +853,7 @@ namespace StockApp
         private System.Windows.Forms.GroupBox grpClient;
         private System.Windows.Forms.GroupBox grpProduct;
         private System.Windows.Forms.GroupBox grpSale;
-        private System.Windows.Forms.Button btnListSale;
+        private System.Windows.Forms.Button btnSelectedSalePrd;
         private System.Windows.Forms.Button btnSale;
         private System.Windows.Forms.Button btnListProduct;
         private System.Windows.Forms.Button btnProductCreate;
@@ -856,7 +871,6 @@ namespace StockApp
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtClientSearch;
         private System.Windows.Forms.DataGridView dataGridViewClient;
-        private System.Windows.Forms.BindingSource clientBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcodeNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -870,14 +884,6 @@ namespace StockApp
         private System.Windows.Forms.DataGridViewButtonColumn columnDelete;
         private System.Windows.Forms.Button btnClientRefresh;
         private System.Windows.Forms.Button btnPrdRefresh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idClientDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modifiedAtDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnClientUpdate;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnClientDelete;
         private System.Windows.Forms.Button btnSalePrd;
@@ -894,18 +900,29 @@ namespace StockApp
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtSalePrd;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSaleCheckBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAdet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeNoDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockAmountDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeNoDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn saleDetailsDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ıdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewSalePrdTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn modifiedAtDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtSalePrd;
+        private System.Windows.Forms.BindingSource productGridBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idClientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modifiedAtDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource clientBindingSource;
     }
 }
 
