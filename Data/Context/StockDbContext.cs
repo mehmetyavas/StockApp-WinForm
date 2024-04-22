@@ -6,7 +6,7 @@ namespace StockApp.Data.Context
 {
     public class StockDbContext : DbContext
     {
-        private const string ConnStr = "Server=DESKTOP-MMGGSL3;Initial Catalog=StockApp;TrustServerCertificate=True;Integrated Security=True";
+        private const string ConnStr = "Server=DESKTOP-MMGGSL3;Initial Catalog=StockAppDev;TrustServerCertificate=True;Integrated Security=True";
         public StockDbContext() : base(ConnStr)
         {
             Database.Connection.ConnectionString = ConnStr;

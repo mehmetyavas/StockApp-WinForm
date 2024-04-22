@@ -14,7 +14,7 @@ namespace StockApp.Data.Repository
     public interface IRepository<TEntity>
         where TEntity : class, IEntity, new()
     {
-
+         
         Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> func = null);
         Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> func);
 
@@ -25,3 +25,4 @@ namespace StockApp.Data.Repository
 
  
 }
+                                                                                                                                    

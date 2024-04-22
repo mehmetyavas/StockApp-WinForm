@@ -28,7 +28,6 @@ namespace StockApp
 
         private Client _selectedClient = null;
 
-        private List<Product> _saleProducts;
         public FormMain()
         {
             InitializeComponent();
@@ -245,8 +244,7 @@ namespace StockApp
                 lblPhone.Text = _selectedClient.Phone;
 
 
-                _saleProducts = await _productRepository.GetAllAsync();
-                GridViewSaleProduct.DataSource = _saleProducts;
+                GridViewSaleProduct.DataSource = await _productRepository.GetAllAsync();
 
             }
         }
@@ -299,18 +297,17 @@ namespace StockApp
 
                 _selectedClient = null;
                 btnSalePrd.Enabled = false;
-                _saleProducts.Clear();
             }
 
         }
 
-        private void txtSalePrd_TextChanged(object sender, EventArgs e)
+        private async void txtSalePrd_TextChanged(object sender, EventArgs e)
         {
             var term = txtSalePrd.Text;
 
             if (txtSalePrd.Text.Length ==0)
             {
-                GridViewSaleProduct.DataSource = _saleProducts;
+                GridViewSaleProduct.DataSource = await _productRepository.GetAllAsync() ;
 
             }
 

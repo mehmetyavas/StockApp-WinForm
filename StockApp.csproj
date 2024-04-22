@@ -101,6 +101,10 @@
     <Compile Include="Migrations\202404202329552_deleteSlug.designer.cs">
       <DependentUpon>202404202329552_deleteSlug.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404221835293_SaleAmountTotal.cs" />
+    <Compile Include="Migrations\202404221835293_SaleAmountTotal.designer.cs">
+      <DependentUpon>202404221835293_SaleAmountTotal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404202329552_deleteSlug.resx">
       <DependentUpon>202404202329552_deleteSlug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404221835293_SaleAmountTotal.resx">
+      <DependentUpon>202404221835293_SaleAmountTotal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
