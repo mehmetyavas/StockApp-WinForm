@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockApp.Data.Entity;
 using StockApp.Data.Repository;
@@ -49,7 +50,7 @@ namespace StockApp
             {
                 if (!products.Any())
                 {
-                    dataGridProduct.DataSource = await _productRepository.GetAllAsync();
+                    dataGridProduct.DataSource = await  _productRepository.GetAllAsync() ;
 
                 }
             }
@@ -106,13 +107,13 @@ namespace StockApp
 
             }
 
-            dataGridProduct.DataSource = await _productRepository.GetAllAsync();
+            dataGridProduct.DataSource = await  FillPRoductSaleGrid() ;
 
         }
 
         private async void btnPrdRefresh_Click(object sender, EventArgs e)
         {
-            dataGridProduct.DataSource = await _productRepository.GetAllAsync();
+            dataGridProduct.DataSource = await  FillPRoductSaleGrid() ;
         }
 
 
@@ -245,7 +246,7 @@ namespace StockApp
                 lblPhone.Text = _selectedClient.Phone;
 
 
-                var prds = await _productRepository.GetAllAsync();
+                var prds = await  FillPRoductSaleGrid() ;
                 GridViewSaleProduct.DataSource = prds.Select(x => new ProductGrid(x)).ToList();
 
             }
@@ -280,7 +281,13 @@ namespace StockApp
 
             Alert.Show(guid.ToString() + "\n " + row.GetRowCellValue(nameof(firstNameDataGridViewTextBoxColumn)), FormAlert.AlertType.Success);
         }
-        #endregion
+       
+        private async Task<List<Product>> FillPRoductSaleGrid() 
+        {
+
+            return await _productRepository.GetAllAsync(x=>x.StockAmount>0);
+
+        }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -311,7 +318,8 @@ namespace StockApp
 
             if (txtSalePrd.Text.Length == 0)
             {
-                GridViewSaleProduct.DataSource = await _productRepository.GetAllAsync();
+                GridViewSaleProduct.DataSource = await  FillPRoductSaleGrid() ;
+                _selectedProducts.Clear();
 
             }
 
@@ -465,6 +473,10 @@ namespace StockApp
             Alert.Show("", FormAlert.AlertType.Success);
         }
 
+
+
+
+        #endregion
 
     }
 }
