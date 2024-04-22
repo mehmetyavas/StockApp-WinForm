@@ -11,7 +11,7 @@ namespace StockApp.Data.Entity
         public long SaleId { get; set; }
         public Guid ProductId { get; set; }
 
-
+        public int Amount { get; set; }
 
         public Sale Sale { get; set; }
 

@@ -11,6 +11,7 @@ namespace StockApp.Data.Entity
         public Guid ClientId { get; set; }
 
 
+        public decimal Total { get; set; }
         public Client Client { get; set; }
 
         public ICollection<SaleDetail> SaleDetails { get; set; } = new List<SaleDetail>();

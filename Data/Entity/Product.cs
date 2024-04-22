@@ -29,5 +29,6 @@ namespace StockApp.Data.Entity
 
         public ICollection<SaleDetail> SaleDetails { get; set; } = new List<SaleDetail>();
 
+
     }
 }

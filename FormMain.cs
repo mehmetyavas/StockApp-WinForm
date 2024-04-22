@@ -329,8 +329,9 @@ namespace StockApp
         private void btnSelectedSalePrd_Click(object sender, EventArgs e)
         {
             var deneme = _selectedProducts;
+
         }
-        List<Product> _selectedProducts = new List<Product>();
+        List<ProductGrid> _selectedProducts = new List<ProductGrid>();
 
         private void GridViewSaleProduct_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
