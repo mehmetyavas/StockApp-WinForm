@@ -61,6 +61,7 @@
     <Compile Include="Data\Configuration\SaleConfig.cs" />
     <Compile Include="Data\Configuration\SaleDetailConfig.cs" />
     <Compile Include="Data\Context\StockDbContext.cs" />
+    <Compile Include="Data\Dto\SaleDetailProductDto.cs" />
     <Compile Include="Data\Entity\BaseEntity.cs" />
     <Compile Include="Data\Entity\Client.cs" />
     <Compile Include="Data\Entity\IEntity.cs" />
@@ -147,9 +148,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\StockApp.Data.Dto.SaleDetailProductDto.datasource" />
     <None Include="Properties\DataSources\StockApp.Data.Entity.Client.datasource" />
     <None Include="Properties\DataSources\StockApp.Data.Entity.Product.datasource" />
     <None Include="Properties\DataSources\StockApp.Data.Entity.ProductGrid.datasource" />
+    <None Include="Properties\DataSources\StockApp.Data.Entity.Sale.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -271,6 +271,7 @@ namespace StockApp
             var guid = Guid.Parse(row.GetRowCellValue(nameof(idClientDataGridViewTextBoxColumn)));
 
             btnSalePrd.Enabled = guid == null ? false : true;
+            btnClientSale.Enabled = guid == null ? false : true;
 
 
             var client = (dataGridViewClient.DataSource as List<Client>)
@@ -475,8 +476,56 @@ namespace StockApp
 
 
 
-
         #endregion
 
+        private async void btnClientSale_Click(object sender, EventArgs e)
+        {
+            if (_selectedClient != null)
+            {
+                panelClientSale.Visible = true;
+
+                lblClientSaleFirstName.Text = _selectedClient.FirstName;
+                lblClientSaleLastName.Text = _selectedClient.LastName;
+                lblClientSaleEmail.Text = _selectedClient.Email;
+                lblClientSalePhone.Text = _selectedClient.Phone;
+
+
+                dataGridViewSale.DataSource = await _saleRepository.GetAllAsync(x => x.ClientId == _selectedClient.Id);
+
+            }
+        }
+
+        private void btnClientSaleBack_Click(object sender, EventArgs e)
+        {
+            if (panelClientSale.Visible)
+            {
+                panelClientSale.Visible = false;
+                lblClientSaleFirstName.Text = null;
+                lblClientSaleLastName.Text = null;
+                lblClientSaleEmail.Text = null;
+                lblClientSalePhone.Text = null;
+
+                _selectedClient = null;
+                btnSalePrd.Enabled = false;
+
+                _selectedProducts.Clear();
+            }
+        }
+
+        private async void dataGridViewSale_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex<0)
+            {
+                return;
+            }
+
+            var saleId = Convert.ToInt64(dataGridViewSale.Rows[e.RowIndex].Cells[nameof(ıdDataGridViewTextBoxColumn)].Value);
+
+            var saleDetails = await _saleDetailRepository.GetSaleDetailsForGrid(saleId);
+
+
+            dataGridViewSaleDetail.DataSource = saleDetails;
+
+        }
     }
 }
