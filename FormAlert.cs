@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockApp.Properties;
-namespace URETIM
+namespace StockApp
 {
     public partial class FormAlert : Form
     {

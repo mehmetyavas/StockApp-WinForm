@@ -1,4 +1,4 @@
-﻿namespace URETIM
+﻿namespace StockApp
 {
     partial class FormAlert
     {
