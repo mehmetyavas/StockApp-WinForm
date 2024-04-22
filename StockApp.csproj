@@ -65,13 +65,15 @@
     <Compile Include="Data\Entity\Client.cs" />
     <Compile Include="Data\Entity\IEntity.cs" />
     <Compile Include="Data\Entity\Product.cs" />
-    <Compile Include="Data\Entity\ProductGrid.cs" />
+    <Compile Include="Data\Entity\GridEntity\ProductGrid.cs" />
     <Compile Include="Data\Entity\Sale.cs" />
     <Compile Include="Data\Entity\SaleDetail.cs" />
     <Compile Include="Data\Repository\BaseRepository.cs" />
     <Compile Include="Data\Repository\ClientRepository.cs" />
     <Compile Include="Data\Repository\IRepository.cs" />
     <Compile Include="Data\Repository\ProductRepository.cs" />
+    <Compile Include="Data\Repository\SaleDetailRepository.cs" />
+    <Compile Include="Data\Repository\SaleRepository.cs" />
     <Compile Include="FormCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,9 +104,9 @@
     <Compile Include="Migrations\202404202329552_deleteSlug.designer.cs">
       <DependentUpon>202404202329552_deleteSlug.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202404221543597_saleAmountTotal.cs" />
-    <Compile Include="Migrations\202404221543597_saleAmountTotal.designer.cs">
-      <DependentUpon>202404221543597_saleAmountTotal.cs</DependentUpon>
+    <Compile Include="Migrations\202404221558464_SaleAmountTotal.cs" />
+    <Compile Include="Migrations\202404221558464_SaleAmountTotal.designer.cs">
+      <DependentUpon>202404221558464_SaleAmountTotal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -131,8 +133,8 @@
     <EmbeddedResource Include="Migrations\202404202329552_deleteSlug.resx">
       <DependentUpon>202404202329552_deleteSlug.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202404221543597_saleAmountTotal.resx">
-      <DependentUpon>202404221543597_saleAmountTotal.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202404221558464_SaleAmountTotal.resx">
+      <DependentUpon>202404221558464_SaleAmountTotal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -147,6 +149,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\StockApp.Data.Entity.Client.datasource" />
     <None Include="Properties\DataSources\StockApp.Data.Entity.Product.datasource" />
+    <None Include="Properties\DataSources\StockApp.Data.Entity.ProductGrid.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -172,9 +175,7 @@
   <ItemGroup>
     <None Include="Resources\back.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Entity\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

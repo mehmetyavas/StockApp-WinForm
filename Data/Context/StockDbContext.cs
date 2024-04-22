@@ -16,7 +16,7 @@ namespace StockApp.Data.Context
         public DbSet<SaleDetail> SaleDetails { get; set; }
         public DbSet<Product> Products { get; set; }
 
-
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -25,6 +25,10 @@ namespace StockApp.Data.Context
             modelBuilder.Configurations.Add(new ProductConfig());
             modelBuilder.Configurations.Add(new SaleConfig());
             modelBuilder.Configurations.Add(new SaleDetailConfig());
+
+            //modelBuilder.Entity<Product>().Ignore(x => x.Adet);
+
+
         }
 
     }

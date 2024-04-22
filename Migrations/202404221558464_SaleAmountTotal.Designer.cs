@@ -7,13 +7,13 @@ namespace StockApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class saleAmountTotal : IMigrationMetadata
+    public sealed partial class SaleAmountTotal : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(saleAmountTotal));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SaleAmountTotal));
         
         string IMigrationMetadata.Id
         {
-            get { return "202404221543597_saleAmountTotal"; }
+            get { return "202404221558464_SaleAmountTotal"; }
         }
         
         string IMigrationMetadata.Source

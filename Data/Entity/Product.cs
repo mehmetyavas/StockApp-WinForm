@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,9 @@ namespace StockApp.Data.Entity
 
         public ICollection<SaleDetail> SaleDetails { get; set; } = new List<SaleDetail>();
 
+
+        //[PositiveNumber,NotMapped]
+        //public int Adet { get; set; }
 
     }
 }

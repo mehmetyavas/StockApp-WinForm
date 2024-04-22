@@ -14,6 +14,7 @@ namespace StockApp.Data.Configuration
             HasIndex(x => x.BarcodeNo);
             HasIndex(x => x.Name);
 
+
         }
     }
 }

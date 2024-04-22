@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockApp.Data.Context;
 using StockApp.Data.Entity;
 using StockApp.Data.Repository;
 using StockApp.Utils.Extensions;
@@ -23,15 +15,24 @@ namespace StockApp
         private readonly ProductRepository _productRepository;
         private readonly ClientRepository _clientRepository;
 
+
+        private readonly SaleRepository _saleRepository;
+        private readonly SaleDetailRepository _saleDetailRepository;
+
         private FormCreate _frmCreate;
 
         private Client _selectedClient = null;
+
+
+        private readonly List<ProductGrid> _selectedProducts = new List<ProductGrid>();
 
         public FormMain()
         {
             InitializeComponent();
             _productRepository = new ProductRepository();
             _clientRepository = new ClientRepository();
+            _saleDetailRepository = new SaleDetailRepository();
+            _saleRepository = new SaleRepository();
         }
 
         #region Product
@@ -143,7 +144,7 @@ namespace StockApp
             {
                 if (!clients.Any())
                 {
-                    var deneme = await _clientRepository.GetAllAsync(); 
+                    var deneme = await _clientRepository.GetAllAsync();
                     dataGridViewClient.DataSource = deneme;
 
                 }
@@ -244,7 +245,8 @@ namespace StockApp
                 lblPhone.Text = _selectedClient.Phone;
 
 
-                GridViewSaleProduct.DataSource = await _productRepository.GetAllAsync();
+                var prds = await _productRepository.GetAllAsync();
+                GridViewSaleProduct.DataSource = prds.Select(x => new ProductGrid(x)).ToList();
 
             }
         }
@@ -297,6 +299,8 @@ namespace StockApp
 
                 _selectedClient = null;
                 btnSalePrd.Enabled = false;
+
+                _selectedProducts.Clear();
             }
 
         }
@@ -315,7 +319,7 @@ namespace StockApp
                 return;
 
 
-            var saleProducts = GridViewSaleProduct.DataSource as List<Product>;
+            var saleProducts = GridViewSaleProduct.DataSource as List<ProductGrid>;
 
             if (saleProducts is null)
             {
@@ -326,67 +330,141 @@ namespace StockApp
             GridViewSaleProduct.DataSource = filteredData;
         }
 
-        private void btnSelectedSalePrd_Click(object sender, EventArgs e)
+        private async void btnSelectedSalePrd_Click(object sender, EventArgs e)
         {
             var deneme = _selectedProducts;
 
+            var saleDetails = new List<SaleDetail>();
+
+
+            foreach (var product in _selectedProducts)
+            {
+
+                saleDetails.Add(new SaleDetail 
+                { 
+                   Amount = product.Adet,
+                   ProductId = product.Id,
+                   
+                });
+
+                product.StockAmount -= product.Adet;
+            }
+
+            var sale = new Sale
+            {
+                ClientId = _selectedClient.Id,
+                Total = _selectedProducts.Sum(x => (x.Price * x.Adet)),
+                SaleDetails = saleDetails
+            };
+
+
+
+
+            await _saleRepository.AddAsync(sale);
+
+            foreach (var p in _selectedProducts)
+            {
+                var product = await _productRepository.GetAsync(x=>x.Id== p.Id);
+
+                product.StockAmount = p.StockAmount;
+
+                await _productRepository.UpdateAsync(product);
+
+
+            }
+
+           
+
+    
+
+            Alert.Show("Satış Başarılı!",FormAlert.AlertType.Success);
+
+            ClosePanelSale();
+
         }
-        List<ProductGrid> _selectedProducts = new List<ProductGrid>();
 
         private void GridViewSaleProduct_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             var column = GridViewSaleProduct.Columns[e.ColumnIndex];
 
 
-            if (!(column is DataGridViewCheckBoxColumn) || e.RowIndex < 0)
-            {
-                return;
-            }
 
             if (column.Name == nameof(ColumnSaleCheckBox))
             {
-
-
-                var row = GridViewSaleProduct.Rows[e.RowIndex];
-                var checkBoxCell = GridViewSaleProduct.Rows[e.RowIndex].Cells[nameof(ColumnSaleCheckBox)].Value;
-
-                if (!(checkBoxCell is bool))
+                if (!(column is DataGridViewCheckBoxColumn) || e.RowIndex < 0)
                 {
                     return;
                 }
+                GridSaleSelectedChanged(e);
+            }
 
-                var guid = Guid.Parse(row.GetRowCellValue(nameof(idDataGridViewSalePrdTextBoxColumn)));
-
-                var prd = (GridViewSaleProduct.DataSource as List<Product>).Single(x => x.Id == guid);
-
-
-
-                var checkedCell = Convert.ToBoolean(checkBoxCell);
-
-                if (checkedCell)
-                {
-                    if (!_selectedProducts.Contains(prd))
-                    {
-                        _selectedProducts.Add(prd);
-
-                    }
-                }
-                else
-                {
-                    if (_selectedProducts.Contains(prd))
-                    {
-                        _selectedProducts.Remove(prd);
-                    }
-
-                }
-
-
-
-                Alert.Show("", FormAlert.AlertType.Success);
+            if (column.Name == nameof(ColumnAdet))
+            {
+                GridSaleAmountChanged(e);
             }
 
         }
 
-     
+        private void GridSaleAmountChanged(DataGridViewCellEventArgs e) 
+        {
+            var adetCell = Convert.ToInt32(GridViewSaleProduct.Rows[e.RowIndex].Cells[nameof(ColumnAdet)].Value);
+            var stockAmountCell = Convert.ToInt32(GridViewSaleProduct.Rows[e.RowIndex].Cells[nameof(stockAmountPrdGridDataGridViewTextBoxColumn)].Value);
+
+            if (adetCell > stockAmountCell)
+            {
+                Alert.Show("Adet, Stok Adetinden Büyük Olamaz!", FormAlert.AlertType.Warning);
+
+                GridViewSaleProduct.Rows[e.RowIndex].Cells[nameof(ColumnAdet)].Value = 1;
+
+                return;
+            }
+
+
+        }
+
+        private void GridSaleSelectedChanged(DataGridViewCellEventArgs e)
+        {
+
+
+
+            var row = GridViewSaleProduct.Rows[e.RowIndex];
+            var checkBoxCell = GridViewSaleProduct.Rows[e.RowIndex].Cells[nameof(ColumnSaleCheckBox)].Value;
+
+            if (!(checkBoxCell is bool))
+            {
+                return;
+            }
+
+            var guid = Guid.Parse(row.GetRowCellValue(nameof(idPrdGridDataGridViewSalePrdTextBoxColumn)));
+
+            var prd = (GridViewSaleProduct.DataSource as List<ProductGrid>).Single(x => x.Id == guid);
+
+
+
+            var checkedCell = Convert.ToBoolean(checkBoxCell);
+
+            if (checkedCell)
+            {
+                if (!_selectedProducts.Contains(prd))
+                {
+                    _selectedProducts.Add(prd);
+
+                }
+            }
+            else
+            {
+                if (_selectedProducts.Contains(prd))
+                {
+                    _selectedProducts.Remove(prd);
+                }
+
+            }
+
+
+
+            Alert.Show("", FormAlert.AlertType.Success);
+        }
+
+
     }
 }
