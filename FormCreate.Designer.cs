@@ -59,7 +59,7 @@
             this.btnProductCreate.Location = new System.Drawing.Point(220, 198);
             this.btnProductCreate.Name = "btnProductCreate";
             this.btnProductCreate.Size = new System.Drawing.Size(98, 37);
-            this.btnProductCreate.TabIndex = 0;
+            this.btnProductCreate.TabIndex = 6;
             this.btnProductCreate.Text = "Kaydet";
             this.btnProductCreate.UseVisualStyleBackColor = true;
             this.btnProductCreate.Click += new System.EventHandler(this.btnProductCreate_Click);
@@ -126,7 +126,7 @@
             this.txtProductBarcode.Location = new System.Drawing.Point(106, 162);
             this.txtProductBarcode.Name = "txtProductBarcode";
             this.txtProductBarcode.Size = new System.Drawing.Size(212, 20);
-            this.txtProductBarcode.TabIndex = 2;
+            this.txtProductBarcode.TabIndex = 5;
             // 
             // label1
             // 
@@ -142,7 +142,7 @@
             this.txtProductPrice.Location = new System.Drawing.Point(106, 129);
             this.txtProductPrice.Name = "txtProductPrice";
             this.txtProductPrice.Size = new System.Drawing.Size(212, 20);
-            this.txtProductPrice.TabIndex = 2;
+            this.txtProductPrice.TabIndex = 4;
             // 
             // txtProductDesc
             // 
@@ -156,14 +156,14 @@
             this.txtProductAmount.Location = new System.Drawing.Point(106, 96);
             this.txtProductAmount.Name = "txtProductAmount";
             this.txtProductAmount.Size = new System.Drawing.Size(212, 20);
-            this.txtProductAmount.TabIndex = 2;
+            this.txtProductAmount.TabIndex = 3;
             // 
             // txtProductName
             // 
             this.txtProductName.Location = new System.Drawing.Point(106, 30);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(212, 20);
-            this.txtProductName.TabIndex = 2;
+            this.txtProductName.TabIndex = 1;
             // 
             // grpCreateClient
             // 
@@ -225,35 +225,35 @@
             this.txtPhone.Location = new System.Drawing.Point(81, 126);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(212, 20);
-            this.txtPhone.TabIndex = 5;
+            this.txtPhone.TabIndex = 4;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(81, 93);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(212, 20);
-            this.txtEmail.TabIndex = 6;
+            this.txtEmail.TabIndex = 3;
             // 
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(81, 27);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(212, 20);
-            this.txtFirstName.TabIndex = 7;
+            this.txtFirstName.TabIndex = 1;
             // 
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(81, 60);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(212, 20);
-            this.txtLastName.TabIndex = 8;
+            this.txtLastName.TabIndex = 2;
             // 
             // btnCreateClient
             // 
             this.btnCreateClient.Location = new System.Drawing.Point(195, 162);
             this.btnCreateClient.Name = "btnCreateClient";
             this.btnCreateClient.Size = new System.Drawing.Size(98, 37);
-            this.btnCreateClient.TabIndex = 4;
+            this.btnCreateClient.TabIndex = 5;
             this.btnCreateClient.Text = "Kaydet";
             this.btnCreateClient.UseVisualStyleBackColor = true;
             this.btnCreateClient.Click += new System.EventHandler(this.btnCreateClient_Click);
