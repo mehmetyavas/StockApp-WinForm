@@ -475,7 +475,6 @@ namespace StockApp
 
 
 
-        #endregion
 
         private async void btnClientSale_Click(object sender, EventArgs e)
         {
@@ -526,6 +525,33 @@ namespace StockApp
 
             dataGridViewSaleDetail.DataSource = saleDetails;
 
+        }
+
+
+        #endregion
+
+        private async void txtClientSearch_TextChanged(object sender, EventArgs e)
+        {
+            var term = txtClientSearch.Text;
+
+            if (txtSalePrd.Text.Length == 0)
+            {
+                dataGridViewClient.DataSource = await _clientRepository.GetAllAsync();
+            }
+
+            if (term.Length < 3)
+                return;
+
+
+            var clients = dataGridViewClient.DataSource as List<Client>;
+
+            if (clients is null)
+            {
+                Alert.Show("Önce Cari Girin!", FormAlert.AlertType.Warning);
+                return;
+            }
+            var filteredData = clients.Where(x => x.FirstName.Contains(term)).ToList();
+            dataGridViewClient.DataSource = filteredData;
         }
     }
 }
