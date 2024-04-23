@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -13,5 +14,20 @@ namespace StockApp.Data.Repository
 {
 
     public class ProductRepository:BaseRepository<Product> 
-    { }
+    {
+
+        public async Task UpdateProductStockAmountProc(long saleId) 
+        {
+            using (var context= new StockDbContext())
+            {
+
+                var result = await context.Database.ExecuteSqlCommandAsync("EXEC CreateSale @SaleId",
+                    new SqlParameter("@SaleId", saleId)
+                );
+            }
+
+        }
+    
+    
+    }
 }

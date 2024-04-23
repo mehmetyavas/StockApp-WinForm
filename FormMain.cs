@@ -378,16 +378,8 @@ namespace StockApp
 
             await _saleRepository.AddAsync(sale);
 
-            foreach (var p in _selectedProducts)
-            {
-                var product = await _productRepository.GetAsync(x=>x.Id== p.Id);
 
-                product.StockAmount = p.StockAmount;
-
-                await _productRepository.UpdateAsync(product);
-
-
-            }
+            await _productRepository.UpdateProductStockAmountProc(sale.Id);
 
            
 
