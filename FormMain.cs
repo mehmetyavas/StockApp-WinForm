@@ -34,6 +34,9 @@ namespace StockApp
             _clientRepository = new ClientRepository();
             _saleDetailRepository = new SaleDetailRepository();
             _saleRepository = new SaleRepository();
+
+
+
         }
 
         #region Product
@@ -51,7 +54,7 @@ namespace StockApp
             {
                 if (!products.Any())
                 {
-                    dataGridProduct.DataSource = await  _productRepository.GetAllAsync() ;
+                    dataGridProduct.DataSource = await _productRepository.GetAllAsync();
 
                 }
             }
@@ -108,13 +111,13 @@ namespace StockApp
 
             }
 
-            dataGridProduct.DataSource = await  FillPRoductSaleGrid() ;
+            dataGridProduct.DataSource = await FillPRoductSaleGrid();
 
         }
 
         private async void btnPrdRefresh_Click(object sender, EventArgs e)
         {
-            dataGridProduct.DataSource = await  FillPRoductSaleGrid() ;
+            dataGridProduct.DataSource = await FillPRoductSaleGrid();
         }
 
 
@@ -247,7 +250,7 @@ namespace StockApp
                 lblPhone.Text = _selectedClient.Phone;
 
 
-                var prds = await  FillPRoductSaleGrid() ;
+                var prds = await FillPRoductSaleGrid();
                 GridViewSaleProduct.DataSource = prds.Select(x => new ProductGrid(x)).ToList();
 
             }
@@ -257,7 +260,7 @@ namespace StockApp
         private void dataGridViewClient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (e.ColumnIndex<0)
+            if (e.ColumnIndex < 0)
             {
                 return;
             }
@@ -288,11 +291,11 @@ namespace StockApp
 
             Alert.Show(guid.ToString() + "\n " + row.GetRowCellValue(nameof(firstNameDataGridViewTextBoxColumn)), FormAlert.AlertType.Success);
         }
-       
-        private async Task<List<Product>> FillPRoductSaleGrid() 
+
+        private async Task<List<Product>> FillPRoductSaleGrid()
         {
 
-            return await _productRepository.GetAllAsync(x=>x.StockAmount>0);
+            return await _productRepository.GetAllAsync(x => x.StockAmount > 0);
 
         }
 
@@ -326,7 +329,7 @@ namespace StockApp
 
             if (txtSalePrd.Text.Length == 0)
             {
-                GridViewSaleProduct.DataSource = await  FillPRoductSaleGrid() ;
+                GridViewSaleProduct.DataSource = await FillPRoductSaleGrid();
                 _selectedProducts.Clear();
 
             }
@@ -356,11 +359,11 @@ namespace StockApp
             foreach (var product in _selectedProducts)
             {
 
-                saleDetails.Add(new SaleDetail 
-                { 
-                   Amount = product.Adet,
-                   ProductId = product.Id,
-                   
+                saleDetails.Add(new SaleDetail
+                {
+                    Amount = product.Adet,
+                    ProductId = product.Id,
+
                 });
 
                 product.StockAmount -= product.Adet;
@@ -381,11 +384,11 @@ namespace StockApp
 
             await _productRepository.UpdateProductStockAmountProc(sale.Id);
 
-           
 
-    
 
-            Alert.Show("Satış Başarılı!",FormAlert.AlertType.Success);
+
+
+            Alert.Show("Satış Başarılı!", FormAlert.AlertType.Success);
 
             ClosePanelSale();
 
@@ -413,7 +416,7 @@ namespace StockApp
 
         }
 
-        private void GridSaleAmountChanged(DataGridViewCellEventArgs e) 
+        private void GridSaleAmountChanged(DataGridViewCellEventArgs e)
         {
             var adetCell = Convert.ToInt32(GridViewSaleProduct.Rows[e.RowIndex].Cells[nameof(ColumnAdet)].Value);
             var stockAmountCell = Convert.ToInt32(GridViewSaleProduct.Rows[e.RowIndex].Cells[nameof(stockAmountPrdGridDataGridViewTextBoxColumn)].Value);
@@ -488,7 +491,7 @@ namespace StockApp
                 lblClientSalePhone.Text = _selectedClient.Phone;
 
 
-                dataGridViewSale.DataSource = (await _saleRepository.GetAllAsync(x => x.ClientId == _selectedClient.Id)).OrderByDescending(x=>x.CreatedAt).ToList();
+                dataGridViewSale.DataSource = (await _saleRepository.GetAllAsync(x => x.ClientId == _selectedClient.Id)).OrderByDescending(x => x.CreatedAt).ToList();
 
             }
         }
@@ -513,7 +516,7 @@ namespace StockApp
 
         private async void dataGridViewSale_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex<0)
+            if (e.RowIndex < 0)
             {
                 return;
             }
@@ -552,6 +555,20 @@ namespace StockApp
             }
             var filteredData = clients.Where(x => x.FirstName.Contains(term)).ToList();
             dataGridViewClient.DataSource = filteredData;
+        }
+
+        private async void FormMain_Load(object sender, EventArgs e)
+        {
+            if ((dataGridViewClient.DataSource as List<Client> ?? new List<Client>()) is List<Client> clients)
+            {
+                if (!clients.Any())
+                {
+                    dataGridViewClient.DataSource = await _clientRepository.GetAllAsync();
+
+                }
+            }
+
+            PanelClientVisible();
         }
     }
 }
