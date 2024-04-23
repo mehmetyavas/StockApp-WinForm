@@ -43,6 +43,7 @@ namespace StockApp
             if (panelClient.Visible)
             {
                 PanelClientVisible();
+                ClosePanelSale();
 
             }
 
@@ -255,6 +256,11 @@ namespace StockApp
 
         private void dataGridViewClient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            if (e.ColumnIndex<0)
+            {
+                return;
+            }
             var column = dataGridViewClient.Columns[e.ColumnIndex];
 
 
@@ -307,6 +313,7 @@ namespace StockApp
 
                 _selectedClient = null;
                 btnSalePrd.Enabled = false;
+                btnClientSale.Enabled = false;
 
                 _selectedProducts.Clear();
             }
@@ -490,7 +497,7 @@ namespace StockApp
                 lblClientSalePhone.Text = _selectedClient.Phone;
 
 
-                dataGridViewSale.DataSource = await _saleRepository.GetAllAsync(x => x.ClientId == _selectedClient.Id);
+                dataGridViewSale.DataSource = (await _saleRepository.GetAllAsync(x => x.ClientId == _selectedClient.Id)).OrderByDescending(x=>x.CreatedAt).ToList();
 
             }
         }
@@ -507,6 +514,7 @@ namespace StockApp
 
                 _selectedClient = null;
                 btnSalePrd.Enabled = false;
+                btnClientSale.Enabled = false;
 
                 _selectedProducts.Clear();
             }

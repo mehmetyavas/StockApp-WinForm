@@ -182,9 +182,9 @@ namespace StockApp
             // 
             // btnListProduct
             // 
-            this.btnListProduct.Location = new System.Drawing.Point(299, 24);
+            this.btnListProduct.Location = new System.Drawing.Point(312, 24);
             this.btnListProduct.Name = "btnListProduct";
-            this.btnListProduct.Size = new System.Drawing.Size(109, 50);
+            this.btnListProduct.Size = new System.Drawing.Size(140, 50);
             this.btnListProduct.TabIndex = 1;
             this.btnListProduct.Text = "Ürün Listele";
             this.btnListProduct.UseVisualStyleBackColor = true;
@@ -192,9 +192,9 @@ namespace StockApp
             // 
             // btnProductCreate
             // 
-            this.btnProductCreate.Location = new System.Drawing.Point(155, 24);
+            this.btnProductCreate.Location = new System.Drawing.Point(78, 24);
             this.btnProductCreate.Name = "btnProductCreate";
-            this.btnProductCreate.Size = new System.Drawing.Size(109, 50);
+            this.btnProductCreate.Size = new System.Drawing.Size(140, 50);
             this.btnProductCreate.TabIndex = 2;
             this.btnProductCreate.Text = "Ürün Oluştur";
             this.btnProductCreate.UseVisualStyleBackColor = true;
@@ -214,9 +214,9 @@ namespace StockApp
             // 
             // btnListClient
             // 
-            this.btnListClient.Location = new System.Drawing.Point(182, 24);
+            this.btnListClient.Location = new System.Drawing.Point(289, 24);
             this.btnListClient.Name = "btnListClient";
-            this.btnListClient.Size = new System.Drawing.Size(109, 50);
+            this.btnListClient.Size = new System.Drawing.Size(140, 50);
             this.btnListClient.TabIndex = 0;
             this.btnListClient.Text = "Cari Listele";
             this.btnListClient.UseVisualStyleBackColor = true;
@@ -224,9 +224,9 @@ namespace StockApp
             // 
             // btnClientCreate
             // 
-            this.btnClientCreate.Location = new System.Drawing.Point(38, 24);
+            this.btnClientCreate.Location = new System.Drawing.Point(55, 24);
             this.btnClientCreate.Name = "btnClientCreate";
-            this.btnClientCreate.Size = new System.Drawing.Size(109, 50);
+            this.btnClientCreate.Size = new System.Drawing.Size(140, 50);
             this.btnClientCreate.TabIndex = 0;
             this.btnClientCreate.Text = "Cari Oluştur";
             this.btnClientCreate.UseVisualStyleBackColor = true;
@@ -639,6 +639,8 @@ namespace StockApp
             this.ColumnClientUpdate.Name = "ColumnClientUpdate";
             this.ColumnClientUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnClientUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+
+            this.ColumnClientUpdate.DefaultCellStyle.BackColor = Color.LightGreen;
             // 
             // ColumnClientDelete
             // 
@@ -647,6 +649,8 @@ namespace StockApp
             this.ColumnClientDelete.Name = "ColumnClientDelete";
             this.ColumnClientDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnClientDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+
+            this.ColumnClientDelete.DefaultCellStyle.BackColor = Color.MediumVioletRed;
             // 
             // panelClientTop
             // 
@@ -758,12 +762,15 @@ namespace StockApp
             this.columnUpdate.Name = "columnUpdate";
             this.columnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnUpdate.DefaultCellStyle.BackColor = Color.LightGreen;
             // 
             // columnDelete
             // 
             this.columnDelete.FillWeight = 10F;
             this.columnDelete.HeaderText = "Sil";
             this.columnDelete.Name = "columnDelete";
+
+            this.columnDelete.DefaultCellStyle.BackColor = Color.MediumVioletRed;
             // 
             // panelProductTop
             // 
